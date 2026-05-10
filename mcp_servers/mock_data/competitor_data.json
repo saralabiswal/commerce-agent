@@ -1,0 +1,162 @@
+{
+  "competitor_listings": {
+    "electronics": [
+      {
+        "asin": "B09XS7JWHH",
+        "brand": "Sony",
+        "title": "Sony WH-1000XM5 Wireless Industry Leading Noise Canceling Headphones with Auto Noise Canceling Optimizer, Crystal Clear Hands-Free Calling, and Alexa Voice Control, Black",
+        "bullet_points": [
+          "Industry-leading noise canceling with two processors and 8 microphones for a premium listening experience even on calls",
+          "Crystal clear hands-free calling: 4 beamforming microphones and bone conduction sensor with precise voice pickup in calls",
+          "Up to 30 hours battery life with quick charging (3 min charge for 3 hours of playback)",
+          "Ultra-comfortable design with a newly redesigned headband and soft fit leather for all-day listening",
+          "Multipoint connection allows pairing with 2 devices simultaneously — seamlessly switch between devices"
+        ],
+        "description": "The WH-1000XM5 wireless headphones take noise canceling to the next level with two processors controlling 8 microphones for unrivaled noise cancellation across a wider sound range.",
+        "quality_score": 91,
+        "keywords": ["noise canceling", "wireless headphones", "bluetooth headphones", "over ear headphones", "sony headphones"]
+      },
+      {
+        "asin": "B08HMWZBWB",
+        "brand": "Bose",
+        "title": "Bose QuietComfort 45 Bluetooth Wireless Noise Cancelling Headphones — Over Ear Headphones with Microphone, Up to 24 Hours of Battery Life, White Smoke",
+        "bullet_points": [
+          "NOISE CANCELLING HEADPHONES: Proprietary Bose technology measures, compares, and reacts to outside noise, canceling it with opposite signals",
+          "HIGH FIDELITY AUDIO: A carefully tuned suite of microphones and speakers deliver quiet and clear audio, whether you're listening to music or on a call",
+          "ALL-DAY BATTERY: 24 hours of battery life — whether you're commuting, on a flight, or in the office all day",
+          "AWARE MODE: Let in your surroundings without removing your headphones — toggle between full noise cancellation and Aware Mode with a single tap",
+          "COMFORTABLE FIT: Refined design with plush ear cushions and soft materials for hours of fatigue-free listening"
+        ],
+        "description": "Bose QuietComfort 45 headphones balance quiet and sound, helping you tune out the world when you need it most.",
+        "quality_score": 88,
+        "keywords": ["noise cancelling headphones", "bose headphones", "wireless headphones", "bluetooth headphones", "over ear headphones"]
+      },
+      {
+        "asin": "B0BDHD9JXW",
+        "brand": "Apple",
+        "title": "Apple AirPods Max Wireless Over-Ear Headphones, Active Noise Cancelling, Transparency Mode, Personalized Spatial Audio, Dolby Atmos, Bluetooth Headphones for iPhone — Midnight",
+        "bullet_points": [
+          "Stunning high-fidelity audio: 40mm Apple-designed dynamic driver delivers incredibly detailed acoustics with ultra-low distortion",
+          "Active Noise Cancellation: Industry-leading ANC uses computational audio to produce an immersive listening experience",
+          "Personalized Spatial Audio with dynamic head tracking places sound all around you for an immersive listening experience like you're in a theater",
+          "Transparency mode lets you hear and interact with the world around you without removing your headphones",
+          "Up to 20 hours of listening time with Active Noise Cancellation and Transparency mode enabled"
+        ],
+        "description": "AirPods Max reimagines over-ear headphones. An Apple-designed dynamic driver provides incredible sound. ANC, Transparency mode, and Personalized Spatial Audio create a fully immersive listening experience.",
+        "quality_score": 93,
+        "keywords": ["airpods max", "apple headphones", "wireless headphones", "active noise cancellation", "spatial audio"]
+      }
+    ],
+    "grocery": [
+      {
+        "asin": "B00VRAF7ZU",
+        "brand": "Gain",
+        "title": "Gain Flings Laundry Detergent Soap Pacs, Original Scent, HE Compatible",
+        "bullet_points": [
+          "Laundry detergent pacs with detergent, Oxi Boost, and Febreze freshness in one",
+          "Original scent designed for long-lasting freshness after washing",
+          "Works in high-efficiency and standard washing machines",
+          "Pre-measured pac format helps reduce pouring and measuring mess",
+          "Use one pac for regular loads and follow package directions for larger loads"
+        ],
+        "description": "Gain Flings combine laundry detergent with scent and cleaning boosters in a convenient pre-measured pac.",
+        "quality_score": 86,
+        "keywords": ["laundry detergent pods", "laundry pacs", "gain flings", "he detergent", "scented detergent"]
+      },
+      {
+        "asin": "B0B7KZK4QJ",
+        "brand": "Persil",
+        "title": "Persil Discs Laundry Detergent Pacs, Original Scent, Stain-Fighting Clean",
+        "bullet_points": [
+          "Pre-measured laundry detergent discs for everyday stain-fighting performance",
+          "Designed for bright whites and vibrant colors when used as directed",
+          "Compatible with high-efficiency and standard washing machines",
+          "Original scent leaves laundry fresh after the wash cycle",
+          "Convenient pac format helps simplify laundry routines"
+        ],
+        "description": "Persil Discs deliver concentrated detergent in a convenient pac format for strong cleaning performance.",
+        "quality_score": 84,
+        "keywords": ["persil discs", "laundry detergent pods", "stain remover detergent", "he laundry detergent", "laundry pacs"]
+      }
+    ]
+  },
+  "product_catalog": {
+    "ANKER-Q30-BLK": {
+      "sku": "ANKER-Q30-BLK",
+      "brand": "Soundcore",
+      "product_name": "Soundcore by Anker Life Q30 Hybrid Active Noise Cancelling Headphones",
+      "product_type": "Over-Ear Wireless Headphones",
+      "model_number": "Life Q30",
+      "specifications": {
+        "driver_size": "40mm dynamic drivers",
+        "frequency_response": "16Hz - 40kHz",
+        "audio_certification": "Hi-Res Audio and Hi-Res Audio Wireless",
+        "battery_life": "Up to 40 hours with active noise cancellation; up to 60 hours in standard mode",
+        "charging_time": "5-minute quick charge provides up to 4 hours playback",
+        "connectivity": "Bluetooth wireless connectivity with AUX wired listening option",
+        "anc": "Hybrid active noise cancellation with multiple ambient sound modes",
+        "microphone": "Built-in microphones for calls and noise reduction",
+        "weight": "Approximately 260g",
+        "foldable": true,
+        "app_support": "Soundcore app EQ and noise-cancellation mode controls",
+        "colors": ["Black", "Blue", "Pink"],
+        "what_in_box": ["Headphones", "USB-C charging cable", "3.5mm AUX cable", "travel case"]
+      },
+      "brand_guidelines": {
+        "tone": "clear, practical, audio-focused — benefits backed by specs",
+        "prohibited_claims": ["best headphones in the world", "complete silence", "studio reference without proof"],
+        "required_disclaimers": [],
+        "key_differentiators": ["hybrid active noise cancellation", "up to 40 hours ANC playback", "Hi-Res Audio", "Soundcore app controls"],
+        "target_audience": "commuters, remote workers, students, frequent travelers"
+      }
+    },
+    "ECHO-DOT-5G-BLK": {
+      "sku": "ECHO-DOT-5G-BLK",
+      "brand": "Amazon",
+      "product_name": "Echo Dot (5th Gen) Smart Speaker with Alexa",
+      "product_type": "Smart Speaker",
+      "model_number": "Echo Dot 5th Gen",
+      "specifications": {
+        "voice_assistant": "Alexa built in",
+        "audio": "Improved audio with clearer vocals, deeper bass, and vibrant sound",
+        "smart_home": "Voice control for compatible smart home devices",
+        "connectivity": "Wi-Fi and Bluetooth connectivity",
+        "privacy": "Microphone off button and layered privacy controls",
+        "use_cases": ["music streaming", "alarms and timers", "smart home control", "hands-free calling"],
+        "colors": ["Charcoal", "Glacier White", "Deep Sea Blue"],
+        "what_in_box": ["Echo Dot", "power adapter", "quick start guide"]
+      },
+      "brand_guidelines": {
+        "tone": "helpful, simple, family-friendly",
+        "prohibited_claims": ["guaranteed privacy", "works with every smart device", "#1 smart speaker"],
+        "required_disclaimers": ["Requires compatible smart home devices for smart home control"],
+        "key_differentiators": ["Alexa voice assistant", "compact design", "improved audio", "privacy controls"],
+        "target_audience": "smart home beginners, families, apartment dwellers, gift buyers"
+      }
+    },
+    "TIDE-POD-96CT": {
+      "sku": "TIDE-POD-96CT",
+      "brand": "Tide",
+      "product_name": "Tide PODS Spring Meadow Laundry Detergent Pacs, 96 Count",
+      "product_type": "Laundry Detergent Pacs",
+      "model_number": "Spring Meadow 96 Count",
+      "specifications": {
+        "count": "96 laundry pacs",
+        "scent": "Spring Meadow",
+        "format": "Pre-measured detergent pacs",
+        "cleaning_system": "3-in-1 detergent, stain remover, and color protector",
+        "washer_compatibility": "Works in standard and HE washing machines",
+        "water_temperature": "Designed for hot and cold water wash cycles",
+        "safety": "Keep out of reach of children; use package handling instructions",
+        "use_cases": ["everyday laundry", "family loads", "stain removal", "color care"]
+      },
+      "brand_guidelines": {
+        "tone": "trusted, practical, family-focused",
+        "prohibited_claims": ["safe for children", "chemical-free", "non-toxic", "guaranteed stain removal"],
+        "required_disclaimers": ["Keep laundry pacs out of reach of children"],
+        "key_differentiators": ["3-in-1 clean", "Spring Meadow scent", "96 count value size", "HE compatible"],
+        "target_audience": "families, busy households, value shoppers, grocery replenishment buyers"
+      }
+    }
+  }
+}

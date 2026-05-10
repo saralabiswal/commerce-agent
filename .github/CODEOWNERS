@@ -1,0 +1,6 @@
+# Code owner: Sarala Biswal
+#
+# GitHub CODEOWNERS entries require an account, team, or email token. This uses
+# the Sarala Biswal account handle convention; update the token if the GitHub
+# username is different in the target repository.
+* @SaralaBiswal

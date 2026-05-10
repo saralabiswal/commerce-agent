@@ -1,0 +1,37 @@
+Walmart Supplier Center Content Guidelines — Electronics
+
+PRODUCT TITLES
+Walmart product titles may be up to 200 characters. Unlike Amazon, Walmart's search algorithm places significant weight on the first 75 characters of the title — ensure the most important keywords and the brand name appear early.
+
+Required elements: brand name, product name, key feature or model identifier. Optional but recommended: size, color, count, or variant information.
+
+Walmart prohibits: "sale," "clearance," "free," pricing information, delivery promises, or retailer-specific terms. Superlatives ("best," "greatest") are discouraged but not automatically suppressed — however, unsubstantiated claims can result in listing removal.
+
+PRODUCT BULLETS / KEY FEATURES
+Walmart allows up to 5 feature bullets. Unlike Amazon's 255-character limit, Walmart's bullet character limit is 500 characters per bullet. This allows sellers to include more specification detail per bullet point.
+
+Walmart recommends a "feature + benefit + specification" structure: state the feature, explain why it matters to the customer, and include the supporting specification. Example: "Active Noise Cancellation — block out distractions in open offices or noisy commutes with 3 adjustable ANC levels that reduce ambient noise by up to 35dB."
+
+PRODUCT DESCRIPTION
+Walmart supports product descriptions up to 4000 characters — significantly more than Amazon. Use this space to create a comprehensive product story. Include a brief intro paragraph, a spec summary, compatibility information, and what's included in the box.
+
+Walmart's algorithm rewards richer, longer descriptions that fully describe the product. Thin descriptions (under 500 characters) may result in reduced search visibility.
+
+SEARCH KEYWORDS
+Walmart's keyword field supports up to 1000 characters. Include all relevant synonyms, alternate product names, use-case terms, and compatible device categories. Walmart's search algorithm is more forgiving about keyword repetition than Amazon's, but focus on relevance over volume.
+
+ELECTRONICS SPECIFIC REQUIREMENTS
+For consumer electronics on Walmart:
+- Always include connectivity specifications (Bluetooth version, range)
+- Always include battery specifications (capacity in mAh or runtime in hours)
+- Include dimensions and weight for portable/wearable devices
+- Include compatibility information prominently
+- Include all accessories included in the box
+- IP or water resistance rating should appear in bullets if applicable
+
+CONTENT QUALITY AND COMPLETENESS SCORE
+Walmart measures listing quality through the Content Score — a 0-100 metric visible in the Supplier Center. Items below 60 receive reduced search placement. Items above 80 are eligible for premium placement in search results and category pages.
+
+Key factors in Walmart Content Score: image count and quality, title completeness, bullet count and length, description length and completeness, category attribute completeness.
+
+For electronics, completing all category-specific attributes (connectivity type, battery life, dimensions, compatibility, color) can add 15-20 points to the Content Score above what title and bullets alone provide.

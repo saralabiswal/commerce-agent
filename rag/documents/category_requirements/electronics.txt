@@ -1,0 +1,66 @@
+Electronics Category Content Requirements — Cross-Retailer Guide
+
+HEADPHONES AND AUDIO EQUIPMENT
+
+Title Best Practices:
+The most effective headphone titles on Amazon follow this structure:
+[Brand] [Model Name/Number] [Product Type] [Key Feature 1], [Key Feature 2], [Color/Variant]
+
+Examples of high-performing title structures:
+- "Sony WH-1000XM5 Wireless Industry Leading Noise Canceling Headphones with Alexa Voice Control, Black"
+- "Bose QuietComfort 45 Bluetooth Wireless Noise Cancelling Headphones — Over Ear Headphones with Microphone, Up to 24 Hours Battery"
+
+Key terms that drive search volume in the headphones category:
+- "wireless headphones" (380,000+ monthly searches)
+- "bluetooth headphones" (450,000+ monthly searches)
+- "noise cancelling headphones" (290,000+ monthly searches)
+- "over ear headphones" (210,000+ monthly searches)
+- "headphones with microphone" (180,000+ monthly searches)
+- "active noise cancellation headphones" (95,000+ monthly searches)
+
+Required specifications for headphones listings:
+1. Bluetooth version (e.g., Bluetooth 5.0, 5.2)
+2. Battery life in hours (playback, with ANC on/off if different)
+3. Charging time to full
+4. Driver size in mm (for over-ear and on-ear)
+5. Connectivity options (USB-C, 3.5mm, wireless only)
+6. Microphone type and count (built-in, beamforming, etc.)
+7. Weight in grams
+8. Foldable: yes/no
+9. Multipoint pairing: yes/no and number of devices
+10. Water/sweat resistance: IP rating if applicable
+11. Compatibility: iOS, Android, Windows, Mac, gaming consoles
+
+Bullet Point Strategy for Headphones:
+High-performing headphone listings consistently use these 5 bullet structure:
+1. AUDIO QUALITY — driver specs, frequency response, tuning philosophy
+2. NOISE CANCELLATION — ANC type, effectiveness, adjustable levels
+3. BATTERY AND CHARGING — total hours, fast charge capability, standby
+4. CALL QUALITY — microphone count, type, call clarity features
+5. COMFORT AND DESIGN — weight, ear cushion material, foldability, accessories
+
+Headphone Content Mistakes to Avoid:
+- Claiming "industry leading" without substantiation — major brands (Sony, Bose, Apple) own this space
+- Vague battery claims ("long battery life") without specifying hours
+- Missing Bluetooth version — critical purchase signal for buyers
+- No IP rating mention when the product has one — buyers specifically filter for this
+- Describing fit as "one size fits all" — technically inaccurate and weakens trust
+- Using "crystal clear" or "crisp audio" without supporting specifications
+
+SMART SPEAKERS AND HOME AUDIO
+
+Title Requirements: Include voice assistant compatibility (Alexa, Google Assistant, Siri) if applicable. Include key room coverage spec if marketed for home use.
+
+WIRELESS EARBUDS
+
+Additional Required Specs: ear tip sizes included, active vs passive noise isolation, IP rating for sweat resistance (critical for fitness marketing), stem vs compact form factor, charging case battery capacity.
+
+GENERAL ELECTRONICS QUALITY STANDARDS
+
+The minimum content threshold for competitive placement in Electronics:
+- Title: 80+ characters, contains brand + product type + 1-2 key features
+- Bullets: exactly 5, each 150+ characters, each covering a distinct product dimension
+- Description: 800+ characters, covers use cases and key specs not in bullets
+- Backend keywords: 200+ characters, no title repetition
+
+Listings meeting all four criteria score in the top 30% of their category on average quality metrics.

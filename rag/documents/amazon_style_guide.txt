@@ -1,0 +1,47 @@
+Amazon Product Listing Style Guide — Electronics Category
+
+TITLE REQUIREMENTS
+Titles must be between 20 and 200 characters. Include the brand name, product type, and key differentiating features. Use title case — capitalize the first letter of each major word. Do not use ALL CAPS. Include the model number when it helps customers identify the correct product.
+
+Prohibited in titles: "best," "#1," "guaranteed," "free shipping," "sale," "deal," "limited time," "today only," "act now." Do not include promotional language of any kind.
+
+Required in Electronics titles: brand name, product type (e.g., "Wireless Headphones," "Smart Speaker," "Bluetooth Earbuds"). Model number strongly recommended. Key specs that differentiate the product (e.g., "Noise Cancelling," "30-Hour Battery," "Active Noise Cancellation") may be included if they fit within the character limit.
+
+BULLET POINTS
+Electronics listings require exactly 5 bullet points. Each bullet point must be 255 characters or fewer. Begin each bullet with a capital letter. Do not begin bullets with symbols, special characters, or promotional language.
+
+Structure bullet points around customer benefits, not just features. Lead with the benefit, then support it with the feature or specification. Example: "Stay connected all day — 30-hour battery life means fewer interruptions on long commutes or work-from-home sessions" is stronger than "30-hour battery life."
+
+Do not include pricing, shipping information, or promotional offers in bullet points. Do not include HTML tags in bullet points.
+
+PRODUCT DESCRIPTIONS
+Product descriptions may be up to 2000 characters. Limited HTML is permitted: <b> for bold, <br> for line breaks, <li> and <ul> for lists. Use HTML sparingly — not every sentence needs formatting.
+
+Focus descriptions on use cases, key benefits, and what makes the product the right choice for the customer's situation. Avoid repeating what is already in the title and bullets verbatim.
+
+Prohibited in descriptions: "best seller" (unless substantiated with a citation), "top rated" (without proof), "award winning" (without specifying the award), vague lifetime warranty claims without specific terms.
+
+BACKEND KEYWORDS
+The search terms field allows up to 250 characters. Do not repeat keywords already in the title. Do not include competitor brand names. Do not use commas — separate keywords with spaces. Do not include prohibited words or offensive terms.
+
+Use backend keywords to capture alternate phrasings, synonyms, and use-case terms that could not fit in the title or bullets. Example: if your title says "Wireless Headphones," use backend keywords for "cordless headphones," "over ear headphones," "on ear headphones," "headset."
+
+CONTENT QUALITY STANDARDS
+Amazon evaluates listing quality across multiple dimensions: keyword relevance, content completeness, and customer experience. Listings with incomplete content are less likely to appear in search results and are more likely to be suppressed.
+
+Common reasons for suppression: missing required fields, title exceeding character limit, insufficient bullet points, prohibited content.
+
+Electronics Category Specific Requirements:
+- Include connectivity specifications (Bluetooth version, Wi-Fi standard, etc.)
+- Include battery life in hours or mAh for battery-powered devices
+- Include compatibility information (iOS, Android, Windows, Mac)
+- Include dimensions and weight for wearable or portable devices
+- Include water resistance rating (IP rating) if applicable
+- Include warranty information in the description (not in title or bullets)
+
+KEYWORD STRATEGY
+High-performing Electronics listings on Amazon target 8-12 relevant keywords across title, bullets, and description combined. The most valuable keywords appear in the title. Secondary keywords can appear naturally in bullets and description.
+
+For headphones and audio equipment, top search terms include: bluetooth headphones, wireless headphones, noise cancelling headphones, over ear headphones, headphones with microphone, active noise cancellation headphones, foldable headphones.
+
+Keyword stuffing — repeating the same keyword multiple times unnaturally — can suppress listings and should be avoided.

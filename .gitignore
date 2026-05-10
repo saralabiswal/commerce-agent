@@ -1,0 +1,25 @@
+# Local environment
+.env
+.venv/
+venv/
+
+# Python build/cache artifacts
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Local runtime data
+data/
+
+# macOS/editor files
+.DS_Store
+
+# Local planning notes
+docs/planning/

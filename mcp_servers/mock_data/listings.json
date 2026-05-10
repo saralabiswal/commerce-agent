@@ -1,0 +1,131 @@
+{
+  "amazon": {
+    "B08N5WRWNW": {
+      "asin": "B08N5WRWNW",
+      "sku": "ECHO-DOT-5G-BLK",
+      "retailer": "amazon",
+      "title": "Echo Dot (5th Gen) Smart Speaker with Alexa",
+      "bullet_points": [
+        "Improved audio with clearer highs, deeper bass and vibrant sound",
+        "Voice control your entertainment",
+        "Control smart home devices with just your voice",
+        "Connect with others hands-free",
+        "Designed to protect your privacy"
+      ],
+      "description": "Meet the all-new Echo Dot - our most popular smart speaker with Alexa. The sleek, compact design delivers crisp vocals and balanced bass for full sound.",
+      "backend_keywords": "echo dot alexa smart speaker voice control",
+      "category": "electronics",
+      "brand": "Amazon",
+      "price": 49.99,
+      "bsr": 12,
+      "review_count": 145823,
+      "review_rating": 4.7
+    },
+    "B09B4MRJQK": {
+      "asin": "B09B4MRJQK",
+      "sku": "TIDE-POD-96CT",
+      "retailer": "amazon",
+      "title": "Tide Pods 3 in 1 Laundry Detergent Pacs, Spring Meadow, 96 Count",
+      "bullet_points": [
+        "Cleans, fights stains, brightens laundry all in one",
+        "HE Turbo Clean technology removes stains in cold water",
+        "Works in all washing machines",
+        "Child-guard packaging to keep pods away from kids and pets"
+      ],
+      "description": "Tide PODS is a revolutionary 3-in-1 laundry solution that combines detergent, stain remover, and color protector.",
+      "backend_keywords": "laundry detergent pods stain remover",
+      "category": "grocery",
+      "brand": "Tide",
+      "price": 24.97,
+      "bsr": 5,
+      "review_count": 89234,
+      "review_rating": 4.8
+    },
+    "ANKER-Q30-BLK": {
+      "asin": "ANKER-Q30-BLK",
+      "sku": "ANKER-Q30-BLK",
+      "retailer": "amazon",
+      "title": "Soundcore by Anker Life Q30 Hybrid Active Noise Cancelling Headphones",
+      "bullet_points": [
+        "Hybrid active noise cancellation helps reduce ambient noise",
+        "Up to 40 hours of playtime with ANC enabled",
+        "Hi-Res Audio with 40mm dynamic drivers",
+        "Soundcore app lets you customize EQ and noise modes",
+        "Foldable over-ear design includes travel case"
+      ],
+      "description": "Soundcore Life Q30 wireless headphones combine hybrid active noise cancellation, long battery life, Hi-Res Audio, and app-based EQ controls for travel, work, and everyday listening.",
+      "backend_keywords": "soundcore life q30 noise cancelling headphones wireless over ear headphones",
+      "category": "electronics",
+      "brand": "Soundcore",
+      "price": 79.99,
+      "bsr": 735,
+      "review_count": 78240,
+      "review_rating": 4.5
+    }
+  },
+  "walmart": {
+    "ECHO-DOT-5G-BLK": {
+      "asin": "ECHO-DOT-5G-BLK",
+      "sku": "ECHO-DOT-5G-BLK",
+      "retailer": "walmart",
+      "title": "Echo Dot 5th Gen Smart Speaker with Alexa",
+      "bullet_points": [
+        "Compact smart speaker with Alexa voice assistant",
+        "Improved audio for music, podcasts, and radio",
+        "Voice control compatible smart home devices",
+        "Set timers, alarms, reminders, and routines",
+        "Built with microphone off button for privacy"
+      ],
+      "description": "Echo Dot is a compact smart speaker with Alexa for music, smart home control, timers, alarms, and hands-free help.",
+      "backend_keywords": "echo dot smart speaker alexa voice assistant smart home",
+      "category": "electronics",
+      "brand": "Amazon",
+      "price": 49.99,
+      "bsr": null,
+      "review_count": 1280,
+      "review_rating": 4.6
+    },
+    "TIDE-POD-96CT": {
+      "asin": "TIDE-POD-96CT",
+      "sku": "TIDE-POD-96CT",
+      "retailer": "walmart",
+      "title": "Tide PODS Spring Meadow Laundry Detergent Pacs, 96 Count",
+      "bullet_points": [
+        "3-in-1 laundry pacs clean, fight stains, and protect colors",
+        "Spring Meadow scent leaves clothes smelling fresh",
+        "Works in standard and HE washing machines",
+        "Pre-measured pacs help simplify laundry day",
+        "Keep laundry pacs out of reach of children"
+      ],
+      "description": "Tide PODS Spring Meadow laundry detergent pacs combine detergent, stain remover, and color protection in a pre-measured 96 count pack.",
+      "backend_keywords": "tide pods spring meadow laundry detergent pacs 96 count",
+      "category": "grocery",
+      "brand": "Tide",
+      "price": 24.97,
+      "bsr": null,
+      "review_count": 6420,
+      "review_rating": 4.7
+    },
+    "ANKER-Q30-BLK": {
+      "asin": "ANKER-Q30-BLK",
+      "sku": "ANKER-Q30-BLK",
+      "retailer": "walmart",
+      "title": "Soundcore Life Q30 Wireless Noise Cancelling Headphones",
+      "bullet_points": [
+        "Hybrid active noise cancellation for travel and work",
+        "Up to 40 hours battery life with ANC on",
+        "40mm drivers support detailed wireless audio",
+        "Foldable over-ear design with travel case",
+        "App controls for EQ and ambient sound modes"
+      ],
+      "description": "Soundcore Life Q30 headphones deliver wireless listening with hybrid active noise cancellation, long battery life, and a foldable travel-ready design.",
+      "backend_keywords": "soundcore life q30 wireless noise cancelling headphones over ear",
+      "category": "electronics",
+      "brand": "Soundcore",
+      "price": 79.99,
+      "bsr": null,
+      "review_count": 3920,
+      "review_rating": 4.4
+    }
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "amazon": {
+    "electronics": {
+      "retailer": "amazon",
+      "category": "electronics",
+      "title": {
+        "max_chars": 200,
+        "min_chars": 20,
+        "required_elements": ["brand", "product_type"],
+        "prohibited_words": ["best", "#1", "guaranteed", "free shipping", "sale", "deal", "limited time"],
+        "case_rule": "title_case",
+        "notes": "Include model number if applicable. Do not use ALL CAPS."
+      },
+      "bullet_points": {
+        "count": 5,
+        "max_chars_each": 255,
+        "start_with_capital": true,
+        "prohibited_html": true,
+        "notes": "Start with benefit, not feature. No pricing or promotional language."
+      },
+      "description": {
+        "max_chars": 2000,
+        "html_allowed": ["<b>", "<br>", "<li>", "<ul>"],
+        "prohibited_words": ["best seller", "top rated", "award winning", "lifetime warranty without proof"],
+        "notes": "Use HTML sparingly. Focus on use cases and benefits."
+      },
+      "backend_keywords": {
+        "max_chars": 250,
+        "notes": "No repetition of title words. No competitor brand names. No prohibited words."
+      },
+      "keyword_rules": {
+        "prohibited": ["competitor brand names", "offensive terms", "misleading claims"],
+        "density_warning_threshold": 0.05
+      },
+      "search_volume_benchmarks": {
+        "bluetooth headphones": 450000,
+        "wireless headphones": 380000,
+        "noise cancelling headphones": 290000,
+        "over ear headphones": 210000,
+        "headphones with microphone": 180000,
+        "active noise cancellation headphones": 95000,
+        "foldable headphones": 45000,
+        "premium wireless headphones": 32000
+      }
+    },
+    "grocery": {
+      "retailer": "amazon",
+      "category": "grocery",
+      "title": {
+        "max_chars": 200,
+        "min_chars": 20,
+        "required_elements": ["brand", "product_type", "size_or_count"],
+        "prohibited_words": ["organic (unless certified)", "natural", "healthy", "cure", "treat", "prevent"],
+        "notes": "Include pack count or size. FDA disclaimer required for health claims."
+      },
+      "bullet_points": {
+        "count": 5,
+        "max_chars_each": 255,
+        "notes": "No medical claims. Must include allergen info if applicable."
+      },
+      "description": {
+        "max_chars": 2000,
+        "notes": "No health claims without FDA approval. Include full ingredient list reference."
+      },
+      "backend_keywords": {
+        "max_chars": 250
+      }
+    },
+    "apparel": {
+      "retailer": "amazon",
+      "category": "apparel",
+      "title": {
+        "max_chars": 200,
+        "required_elements": ["brand", "product_type", "material_or_style"],
+        "prohibited_words": ["fake", "replica", "inspired by"],
+        "notes": "Include size range in title for clothing."
+      },
+      "bullet_points": {
+        "count": 5,
+        "max_chars_each": 255,
+        "notes": "Include care instructions. Material composition required."
+      },
+      "description": {
+        "max_chars": 2000
+      },
+      "backend_keywords": {
+        "max_chars": 250
+      }
+    }
+  },
+  "walmart": {
+    "electronics": {
+      "retailer": "walmart",
+      "category": "electronics",
+      "title": {
+        "max_chars": 200,
+        "min_chars": 20,
+        "required_elements": ["brand", "product_type"],
+        "prohibited_words": ["best", "sale", "clearance", "free"],
+        "notes": "Walmart allows slightly more promotional language than Amazon but still restricts superlatives."
+      },
+      "bullet_points": {
+        "count": 5,
+        "max_chars_each": 500,
+        "notes": "Walmart allows longer bullets than Amazon. Include specs explicitly."
+      },
+      "description": {
+        "max_chars": 4000,
+        "notes": "Longer descriptions encouraged. Include full spec table if available."
+      },
+      "backend_keywords": {
+        "max_chars": 1000,
+        "notes": "More generous keyword field than Amazon."
+      }
+    },
+    "grocery": {
+      "retailer": "walmart",
+      "category": "grocery",
+      "title": {
+        "max_chars": 200,
+        "min_chars": 20,
+        "required_elements": ["brand", "product_type", "size_or_count"],
+        "prohibited_words": ["best", "cure", "treat", "safe for children"],
+        "notes": "Include size, count, scent, or flavor where relevant."
+      },
+      "bullet_points": {
+        "count": 5,
+        "max_chars_each": 500,
+        "notes": "Use clear consumer benefits, usage details, and safety notes."
+      },
+      "description": {
+        "max_chars": 4000,
+        "notes": "Include pack details, usage directions, and required safety language."
+      },
+      "backend_keywords": {
+        "max_chars": 1000,
+        "notes": "Include relevant search terms without unsupported health or safety claims."
+      },
+      "search_volume_benchmarks": {
+        "laundry detergent pods": 240000,
+        "tide pods": 210000,
+        "laundry detergent pacs": 95000,
+        "spring meadow detergent": 18000,
+        "he laundry detergent": 76000
+      }
+    }
+  }
+}

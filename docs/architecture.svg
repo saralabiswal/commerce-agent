@@ -1,0 +1,248 @@
+<svg viewBox="0 0 960 720" xmlns="http://www.w3.org/2000/svg" font-family="'Segoe UI', system-ui, -apple-system, sans-serif">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0f172a"/>
+      <stop offset="100%" style="stop-color:#1e293b"/>
+    </linearGradient>
+    <linearGradient id="agentGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1d4ed8"/>
+      <stop offset="100%" style="stop-color:#1e40af"/>
+    </linearGradient>
+    <linearGradient id="mcpGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0e7490"/>
+      <stop offset="100%" style="stop-color:#0c4a6e"/>
+    </linearGradient>
+    <linearGradient id="llmGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#7c3aed"/>
+      <stop offset="100%" style="stop-color:#5b21b6"/>
+    </linearGradient>
+    <linearGradient id="ragGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#b45309"/>
+      <stop offset="100%" style="stop-color:#92400e"/>
+    </linearGradient>
+    <linearGradient id="obsGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#166534"/>
+      <stop offset="100%" style="stop-color:#14532d"/>
+    </linearGradient>
+    <linearGradient id="gateGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#b91c1c"/>
+      <stop offset="100%" style="stop-color:#991b1b"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="glowBlue">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <marker id="arrowGray" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#475569"/>
+    </marker>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#3b82f6"/>
+    </marker>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#ef4444"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#22c55e"/>
+    </marker>
+    <marker id="arrowTeal" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="#06b6d4"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="960" height="720" fill="url(#bgGrad)" rx="12"/>
+
+  <!-- Title -->
+  <text x="480" y="36" text-anchor="middle" fill="#f1f5f9" font-size="18" font-weight="700" letter-spacing="1">CommerceAgent — Platform Architecture</text>
+  <text x="480" y="54" text-anchor="middle" fill="#64748b" font-size="11">MCP Servers · LangGraph Orchestration · RAG Pipeline · LLM Provider Abstraction · Automated Evaluation</text>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ROW 1: User Entry Points -->
+  <!-- ═══════════════════════════════════════════════════ -->
+
+  <!-- Streamlit UI -->
+  <rect x="120" y="76" width="150" height="52" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="195" y="98" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="600" letter-spacing="0.5">INTERFACE</text>
+  <text x="195" y="113" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">Streamlit UI</text>
+  <text x="195" y="125" text-anchor="middle" fill="#64748b" font-size="9">:8501 · 7 pages</text>
+
+  <!-- FastAPI -->
+  <rect x="690" y="76" width="150" height="52" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="765" y="98" text-anchor="middle" fill="#94a3b8" font-size="9" font-weight="600" letter-spacing="0.5">REST API</text>
+  <text x="765" y="113" text-anchor="middle" fill="#e2e8f0" font-size="12" font-weight="700">FastAPI</text>
+  <text x="765" y="125" text-anchor="middle" fill="#64748b" font-size="9">:8000 · /optimize /audit</text>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ROW 2: LangGraph Orchestrator -->
+  <!-- ═══════════════════════════════════════════════════ -->
+
+  <rect x="290" y="76" width="380" height="52" rx="8" fill="#312e81" stroke="#4f46e5" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="480" y="98" text-anchor="middle" fill="#a5b4fc" font-size="9" font-weight="600" letter-spacing="0.5">ORCHESTRATION</text>
+  <text x="480" y="113" text-anchor="middle" fill="#ffffff" font-size="13" font-weight="700">LangGraph Orchestrator</text>
+  <text x="480" y="126" text-anchor="middle" fill="#818cf8" font-size="9">StateGraph · Conditional Edges · Quality Gate Retry Loop</text>
+
+  <!-- Arrows from UI/API to Orchestrator -->
+  <line x1="270" y1="102" x2="290" y2="102" stroke="#475569" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+  <line x1="690" y1="102" x2="670" y2="102" stroke="#475569" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ROW 3: Three Agents -->
+  <!-- ═══════════════════════════════════════════════════ -->
+
+  <!-- ContentAuditAgent -->
+  <rect x="60" y="178" width="196" height="100" rx="8" fill="url(#agentGrad)" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="158" y="198" text-anchor="middle" fill="#bfdbfe" font-size="9" font-weight="600" letter-spacing="0.5">AGENT 1</text>
+  <text x="158" y="214" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="700">ContentAuditAgent</text>
+  <line x1="80" y1="222" x2="236" y2="222" stroke="#2563eb" stroke-width="0.5" stroke-dasharray="4,3"/>
+  <text x="158" y="238" text-anchor="middle" fill="#93c5fd" font-size="9">→ Score current listing</text>
+  <text x="158" y="252" text-anchor="middle" fill="#93c5fd" font-size="9">→ LLM gap analysis</text>
+  <text x="158" y="266" text-anchor="middle" fill="#93c5fd" font-size="9">→ AuditReport</text>
+
+  <!-- CompetitorAnalysisAgent -->
+  <rect x="382" y="178" width="196" height="100" rx="8" fill="url(#agentGrad)" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="480" y="198" text-anchor="middle" fill="#bfdbfe" font-size="9" font-weight="600" letter-spacing="0.5">AGENT 2</text>
+  <text x="480" y="214" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="700">CompetitorAnalysisAgent</text>
+  <line x1="400" y1="222" x2="560" y2="222" stroke="#2563eb" stroke-width="0.5" stroke-dasharray="4,3"/>
+  <text x="480" y="238" text-anchor="middle" fill="#93c5fd" font-size="9">→ Fetch competitor listings</text>
+  <text x="480" y="252" text-anchor="middle" fill="#93c5fd" font-size="9">→ Keyword intelligence</text>
+  <text x="480" y="266" text-anchor="middle" fill="#93c5fd" font-size="9">→ CompetitorReport</text>
+
+  <!-- ContentGenerationAgent -->
+  <rect x="704" y="178" width="196" height="100" rx="8" fill="url(#agentGrad)" stroke="#3b82f6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="802" y="198" text-anchor="middle" fill="#bfdbfe" font-size="9" font-weight="600" letter-spacing="0.5">AGENT 3</text>
+  <text x="802" y="214" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="700">ContentGenerationAgent</text>
+  <line x1="722" y1="222" x2="882" y2="222" stroke="#2563eb" stroke-width="0.5" stroke-dasharray="4,3"/>
+  <text x="802" y="238" text-anchor="middle" fill="#93c5fd" font-size="9">→ RAG-grounded prompt</text>
+  <text x="802" y="252" text-anchor="middle" fill="#93c5fd" font-size="9">→ Generate + validate</text>
+  <text x="802" y="266" text-anchor="middle" fill="#93c5fd" font-size="9">→ GeneratedContent</text>
+
+  <!-- Orchestrator to Agents arrows -->
+  <line x1="340" y1="128" x2="158" y2="178" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowBlue)"/>
+  <line x1="480" y1="128" x2="480" y2="178" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowBlue)"/>
+  <line x1="620" y1="128" x2="802" y2="178" stroke="#4f46e5" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#arrowBlue)"/>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ROW 4: Quality Gate Diamond -->
+  <!-- ═══════════════════════════════════════════════════ -->
+
+  <!-- Diamond shape for quality gate -->
+  <polygon points="802,308 852,338 802,368 752,338" fill="url(#gateGrad)" stroke="#ef4444" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="802" y="333" text-anchor="middle" fill="#fecaca" font-size="9" font-weight="700">QUALITY</text>
+  <text x="802" y="347" text-anchor="middle" fill="#fecaca" font-size="9" font-weight="700">GATE</text>
+
+  <!-- Agent 3 to Quality Gate -->
+  <line x1="802" y1="278" x2="802" y2="308" stroke="#3b82f6" stroke-width="1.5" marker-end="url(#arrowBlue)"/>
+
+  <!-- Score >= 70 label -->
+  <text x="870" y="332" fill="#22c55e" font-size="9" font-weight="600">score ≥ 70</text>
+  <!-- Score < 70 retry arrow -->
+  <text x="680" y="332" fill="#ef4444" font-size="9" font-weight="600" text-anchor="end">score &lt; 70</text>
+
+  <!-- Pass arrow (right to output) -->
+  <line x1="852" y1="338" x2="910" y2="338" stroke="#22c55e" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
+  <rect x="910" y="318" width="38" height="40" rx="6" fill="#166534" stroke="#22c55e" stroke-width="1"/>
+  <text x="929" y="334" text-anchor="middle" fill="#bbf7d0" font-size="9" font-weight="700">OUT</text>
+  <text x="929" y="348" text-anchor="middle" fill="#86efac" font-size="8">PUT</text>
+
+  <!-- Retry arrow (left, back up to Agent 3) -->
+  <path d="M752,338 L700,338 L700,228 L704,228" stroke="#ef4444" stroke-width="1.5" stroke-dasharray="5,3" fill="none" marker-end="url(#arrowRed)"/>
+  <text x="660" y="294" text-anchor="middle" fill="#ef4444" font-size="8" font-weight="600">retry</text>
+  <text x="660" y="304" text-anchor="middle" fill="#ef4444" font-size="8">(max 3)</text>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ROW 5: MCP Servers -->
+  <!-- ═══════════════════════════════════════════════════ -->
+
+  <text x="480" y="410" text-anchor="middle" fill="#64748b" font-size="10" font-weight="600" letter-spacing="1">MCP TOOL LAYER</text>
+  <line x1="120" y1="415" x2="355" y2="415" stroke="#334155" stroke-width="0.5"/>
+  <line x1="605" y1="415" x2="840" y2="415" stroke="#334155" stroke-width="0.5"/>
+
+  <!-- RetailerMCP -->
+  <rect x="60" y="424" width="176" height="72" rx="8" fill="url(#mcpGrad)" stroke="#0891b2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="148" y="442" text-anchor="middle" fill="#a5f3fc" font-size="9" font-weight="600" letter-spacing="0.5">MCP SERVER</text>
+  <text x="148" y="458" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">RetailerMCP</text>
+  <text x="148" y="472" text-anchor="middle" fill="#67e8f9" font-size="8">listings · requirements</text>
+  <text x="148" y="484" text-anchor="middle" fill="#67e8f9" font-size="8">search volume · benchmarks</text>
+
+  <!-- CatalogMCP -->
+  <rect x="392" y="424" width="176" height="72" rx="8" fill="url(#mcpGrad)" stroke="#0891b2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="480" y="442" text-anchor="middle" fill="#a5f3fc" font-size="9" font-weight="600" letter-spacing="0.5">MCP SERVER</text>
+  <text x="480" y="458" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">CatalogMCP</text>
+  <text x="480" y="472" text-anchor="middle" fill="#67e8f9" font-size="8">product specs · brand guidelines</text>
+  <text x="480" y="484" text-anchor="middle" fill="#67e8f9" font-size="8">competitor listings · history</text>
+
+  <!-- ScoringMCP -->
+  <rect x="724" y="424" width="176" height="72" rx="8" fill="url(#mcpGrad)" stroke="#0891b2" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="812" y="442" text-anchor="middle" fill="#a5f3fc" font-size="9" font-weight="600" letter-spacing="0.5">MCP SERVER</text>
+  <text x="812" y="458" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="700">ScoringMCP</text>
+  <text x="812" y="472" text-anchor="middle" fill="#67e8f9" font-size="8">quality score · compliance</text>
+  <text x="812" y="484" text-anchor="middle" fill="#67e8f9" font-size="8">brand safety · content diff</text>
+
+  <!-- Agent to MCP arrows (teal, dashed) -->
+  <line x1="158" y1="278" x2="148" y2="424" stroke="#0891b2" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrowTeal)"/>
+  <line x1="480" y1="278" x2="480" y2="424" stroke="#0891b2" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrowTeal)"/>
+  <line x1="802" y1="278" x2="812" y2="424" stroke="#0891b2" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrowTeal)"/>
+  <!-- Agent 1 also uses ScoringMCP -->
+  <path d="M236,240 Q480,390 724,460" stroke="#0891b2" stroke-width="0.8" stroke-dasharray="3,4" fill="none" marker-end="url(#arrowTeal)"/>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ROW 6: RAG Pipeline + LLM Provider -->
+  <!-- ═══════════════════════════════════════════════════ -->
+
+  <!-- RAG Pipeline -->
+  <rect x="60" y="534" width="340" height="80" rx="8" fill="url(#ragGrad)" stroke="#d97706" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="230" y="553" text-anchor="middle" fill="#fde68a" font-size="9" font-weight="600" letter-spacing="0.5">RAG PIPELINE</text>
+  <text x="230" y="569" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="700">ChromaDB + sentence-transformers</text>
+  <line x1="80" y1="577" x2="380" y2="577" stroke="#d97706" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="145" y="592" text-anchor="middle" fill="#fcd34d" font-size="8.5">vector: cosine similarity</text>
+  <text x="315" y="592" text-anchor="middle" fill="#fcd34d" font-size="8.5">keyword: JSON store</text>
+  <text x="230" y="606" text-anchor="middle" fill="#fbbf24" font-size="8">Amazon guide · Walmart guide · Category rules</text>
+
+  <!-- LLM Provider -->
+  <rect x="440" y="534" width="460" height="80" rx="8" fill="url(#llmGrad)" stroke="#8b5cf6" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="670" y="553" text-anchor="middle" fill="#ddd6fe" font-size="9" font-weight="600" letter-spacing="0.5">LLM PROVIDER ABSTRACTION</text>
+  <text x="670" y="569" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="700">Model-Agnostic · Dependency Injected</text>
+  <line x1="460" y1="577" x2="880" y2="577" stroke="#7c3aed" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="515" y="591" text-anchor="middle" fill="#c4b5fd" font-size="8">Ollama/Llama3</text>
+  <text x="615" y="591" text-anchor="middle" fill="#c4b5fd" font-size="8">Anthropic Claude</text>
+  <text x="720" y="591" text-anchor="middle" fill="#c4b5fd" font-size="8">OpenAI GPT-4o</text>
+  <text x="830" y="591" text-anchor="middle" fill="#c4b5fd" font-size="8">HuggingFace</text>
+  <text x="670" y="606" text-anchor="middle" fill="#a78bfa" font-size="8">One env var change · Zero agent code changes</text>
+
+  <!-- Agent 3 to RAG arrow -->
+  <path d="M802,278 L802,510 L400,510 L400,534" stroke="#d97706" stroke-width="1" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowRed)"/>
+
+  <!-- All Agents to LLM arrows -->
+  <path d="M158,278 L158,520 L480,520 L480,534" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3" fill="none"/>
+  <path d="M480,278 L480,520" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3" fill="none"/>
+  <path d="M802,278 L802,520 L800,520 L800,534" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3" fill="none" marker-end="url(#arrowRed)"/>
+  <line x1="480" y1="520" x2="620" y2="534" stroke="#8b5cf6" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrowRed)"/>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- ROW 7: Observability -->
+  <!-- ═══════════════════════════════════════════════════ -->
+
+  <rect x="60" y="646" width="840" height="52" rx="8" fill="url(#obsGrad)" stroke="#16a34a" stroke-width="1.5" filter="url(#shadow)"/>
+  <text x="480" y="665" text-anchor="middle" fill="#bbf7d0" font-size="9" font-weight="600" letter-spacing="1">OBSERVABILITY · EVALUATION · GUARDRAILS</text>
+  <text x="200" y="682" text-anchor="middle" fill="#86efac" font-size="9">LangSmith Tracing (optional)</text>
+  <text x="400" y="682" text-anchor="middle" fill="#86efac" font-size="9">SQLite Run History</text>
+  <text x="590" y="682" text-anchor="middle" fill="#86efac" font-size="9">8-Dimension Scorer</text>
+  <text x="790" y="682" text-anchor="middle" fill="#86efac" font-size="9">Guardrails · Human Feedback</text>
+  <!-- Dividers -->
+  <line x1="295" y1="655" x2="295" y2="690" stroke="#16a34a" stroke-width="0.5"/>
+  <line x1="490" y1="655" x2="490" y2="690" stroke="#16a34a" stroke-width="0.5"/>
+  <line x1="685" y1="655" x2="685" y2="690" stroke="#16a34a" stroke-width="0.5"/>
+
+  <!-- Observability arrow from pipeline -->
+  <line x1="480" y1="614" x2="480" y2="646" stroke="#16a34a" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arrowGreen)"/>
+
+  <!-- ═══════════════════════════════════════════════════ -->
+  <!-- Legend -->
+  <!-- ═══════════════════════════════════════════════════ -->
+  <text x="480" y="712" text-anchor="middle" fill="#334155" font-size="9">
+    ── solid: primary flow  ╌╌ dashed: tool/service calls   ◆ decision node
+  </text>
+</svg>
