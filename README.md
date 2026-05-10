@@ -213,7 +213,8 @@ make ingest-rag
 
 Interactive docs at `http://localhost:8000/docs`.
 
-Generated Python technical documentation: [`docs/build/html/index.html`](docs/build/html/index.html).
+Python technical documentation source: [`docs/source/index.rst`](docs/source/index.rst).
+Generate the HTML locally with `make docs`, then open `docs/build/html/index.html`.
 
 ```
 POST /optimize      {sku, retailer}            Full pipeline: audit → compete → generate → gate
