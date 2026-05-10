@@ -36,7 +36,7 @@ CommerceAgent solves all four problems in a single automated pipeline that runs 
 
 ![CommerceAgent Architecture](docs/architecture.svg)
 
-> See [`docs/architecture.svg`](docs/architecture.svg) for the full interactive diagram.
+> Open the [full-size architecture diagram](https://raw.githubusercontent.com/saralabiswal/commerce-agent/main/docs/architecture.svg).
 > The **Architecture** page inside the Streamlit app includes a live version with ADR explanations.
 
 The platform is built on five layers that compose into a complete production system:
