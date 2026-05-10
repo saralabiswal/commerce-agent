@@ -1,12 +1,13 @@
 """
 CommerceAgent Orchestrator — LangGraph multi-agent workflow.
 
-Workflow graph:
-  START → [ContentAudit] → [CompetitorAnalysis] → [ContentGeneration] → [QualityGate]
-                                                           ↑                    |
-                                                           └── score < 70 ──────┘
-                                                                       ↓
-                                                                     [END]
+Workflow graph::
+
+    START -> [ContentAudit] -> [CompetitorAnalysis] -> [ContentGeneration] -> [QualityGate]
+                                                               ^                    |
+                                                               +-- score < 70 ------+
+                                                                           |
+                                                                         [END]
 
 Why LangGraph over chains: the quality gate loop and parallel-ready structure require
 a graph, not a linear chain. State is explicit, transitions are debuggable (ADR-002).

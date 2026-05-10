@@ -213,6 +213,8 @@ make ingest-rag
 
 Interactive docs at `http://localhost:8000/docs`.
 
+Generated Python technical documentation: [`docs/build/html/index.html`](docs/build/html/index.html).
+
 ```
 POST /optimize      {sku, retailer}            Full pipeline: audit → compete → generate → gate
 POST /audit         {sku, retailer}            Audit and gap analysis only
@@ -344,6 +346,7 @@ make test            # Full test suite with coverage
 make test-agents     # Agent tests only
 make test-mcp        # MCP server tests only
 make test-eval       # Evaluation framework tests only
+make docs            # Generate Python API docs in docs/build/html
 make demo            # Run pipeline against ANKER-Q30-BLK from the command line
 ```
 

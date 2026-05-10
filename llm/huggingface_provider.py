@@ -1,9 +1,11 @@
 """
 HuggingFace providers — local model weights and Inference API.
 
-huggingface_local: Downloads and runs model weights locally.
-                   Good for air-gapped or GPU-equipped environments.
-huggingface_api:   Calls HF Inference API. No GPU needed, but requires API key.
+Provider modes:
+
+- huggingface_local: Downloads and runs model weights locally. Good for
+  air-gapped or GPU-equipped environments.
+- huggingface_api: Calls HF Inference API. No GPU needed, but requires API key.
 """
 import time
 from typing import Any

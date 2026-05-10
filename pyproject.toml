@@ -70,6 +70,10 @@ dev = [
     "ruff>=0.7.0",
     "mypy>=1.13.0",
 ]
+docs = [
+    "sphinx>=8.1.0",
+    "furo>=2024.8.6",
+]
 
 [tool.setuptools.packages.find]
 where = ["."]

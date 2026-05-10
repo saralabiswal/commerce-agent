@@ -1,0 +1,80 @@
+.sidebar-brand-text {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.2;
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.sidebar-tree .caption,
+.toc-title {
+  color: #0f172a;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.content {
+  line-height: 1.65;
+}
+
+.content h1 {
+  color: #0f172a;
+  font-size: 2.4rem;
+  letter-spacing: 0;
+}
+
+.content h2 {
+  border-top: 1px solid #e2e8f0;
+  color: #0f172a;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+}
+
+.sig {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.92rem;
+  margin-bottom: 0.75rem;
+  padding: 0.65rem 0.85rem;
+}
+
+.py.class,
+.py.function,
+.py.method,
+.py.attribute {
+  margin-bottom: 1.75rem;
+}
+
+.field-list {
+  background: #fbfdff;
+  border-left: 3px solid #14b8a6;
+  margin: 1rem 0;
+  padding: 0.75rem 1rem;
+}
+
+.field-list p {
+  margin-bottom: 0.25rem;
+}
+
+.viewcode-link,
+.headerlink {
+  color: #0f766e;
+}
+
+.bottom-of-page {
+  display: none;
+}
+
+code.literal {
+  border-radius: 4px;
+  padding: 0.1rem 0.28rem;
+}
+
+@media (max-width: 760px) {
+  .content h1 {
+    font-size: 2rem;
+  }
+}

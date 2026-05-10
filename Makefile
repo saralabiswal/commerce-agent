@@ -1,4 +1,4 @@
-.PHONY: setup run run-api run-ui test lint format clean ingest-rag help
+.PHONY: setup run run-api run-ui test lint format docs clean ingest-rag help
 
 # ── Defaults ──────────────────────────────────────────────────────────────────
 # Use venv python/pip if venv exists, otherwise fall back to system python3
@@ -63,11 +63,15 @@ lint:  ## Run ruff linter
 format:  ## Auto-format code with ruff
 	$(PYTHON) -m ruff format .
 
+# ── Documentation ─────────────────────────────────────────────────────────────
+docs:  ## Build Python API documentation with Sphinx
+	$(PYTHON) -m sphinx -E -b html docs/source docs/build/html
+
 # ── Utilities ─────────────────────────────────────────────────────────────────
 clean:  ## Remove build artifacts and cache files
 	find . -type d -name __pycache__ -exec rm -rf {} + 2>/dev/null || true
 	find . -type f -name "*.pyc" -delete 2>/dev/null || true
-	rm -rf .pytest_cache htmlcov .coverage dist build *.egg-info
+	rm -rf .pytest_cache htmlcov .coverage dist build *.egg-info docs/build
 	@echo "🧹 Cleaned."
 
 clean-db:  ## Reset SQLite database
