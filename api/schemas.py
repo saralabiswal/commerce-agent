@@ -1,6 +1,8 @@
 """
 Pydantic request/response models for the FastAPI layer.
 These are the public API contracts — versioned separately from internal agent models.
+
+Owner: Sarala Biswal
 """
 from __future__ import annotations
 
@@ -9,17 +11,20 @@ from pydantic import BaseModel, Field
 # ── Request models ─────────────────────────────────────────────────────────────
 
 class AuditRequest(BaseModel):
+    """Request body for auditing a current product listing."""
     sku: str = Field(..., description="Product SKU or ASIN to audit")
     retailer: str = Field(default="amazon", description="Target retailer: amazon | walmart")
 
 
 class AnalyzeRequest(BaseModel):
+    """Request body for category-level competitor analysis."""
     sku: str = Field(..., description="Product SKU")
     category: str = Field(default="electronics", description="Product category")
     retailer: str = Field(default="amazon")
 
 
 class GenerateRequest(BaseModel):
+    """Request body for generating optimized listing content."""
     sku: str
     retailer: str = "amazon"
     mode: str = Field(
@@ -29,11 +34,13 @@ class GenerateRequest(BaseModel):
 
 
 class OptimizeRequest(BaseModel):
+    """Request body for running the full optimization pipeline."""
     sku: str = Field(..., description="Product SKU to fully optimize")
     retailer: str = Field(default="amazon")
 
 
 class FeedbackRequest(BaseModel):
+    """Request body for recording human quality feedback."""
     run_id: str
     sku: str
     rating: int = Field(..., ge=-1, le=1, description="1=thumbs up, -1=thumbs down")
@@ -44,6 +51,7 @@ class FeedbackRequest(BaseModel):
 # ── Response models ────────────────────────────────────────────────────────────
 
 class GapResponse(BaseModel):
+    """Serialized content gap returned by audit endpoints."""
     field: str
     issue: str
     severity: str
@@ -52,6 +60,7 @@ class GapResponse(BaseModel):
 
 
 class AuditResponse(BaseModel):
+    """API response for current listing audit results."""
     sku: str
     retailer: str
     current_score: float
@@ -64,6 +73,7 @@ class AuditResponse(BaseModel):
 
 
 class KeywordResponse(BaseModel):
+    """Serialized keyword opportunity with search metadata."""
     term: str
     monthly_volume: int
     competition: str
@@ -71,6 +81,7 @@ class KeywordResponse(BaseModel):
 
 
 class CompetitorResponse(BaseModel):
+    """API response for competitor intelligence results."""
     category: str
     top_keywords: list[KeywordResponse]
     winning_patterns: list[str]
@@ -80,6 +91,7 @@ class CompetitorResponse(BaseModel):
 
 
 class ContentResponse(BaseModel):
+    """API response for generated listing content and validation state."""
     sku: str
     retailer: str
     title: str
@@ -98,6 +110,7 @@ class ContentResponse(BaseModel):
 
 
 class OptimizeResponse(BaseModel):
+    """API response for the complete optimization workflow."""
     run_id: str
     sku: str
     retailer: str
@@ -112,6 +125,7 @@ class OptimizeResponse(BaseModel):
 
 
 class RunHistoryItem(BaseModel):
+    """Single persisted optimization run returned by history endpoints."""
     run_id: str
     sku: str
     retailer: str
@@ -127,6 +141,7 @@ class RunHistoryItem(BaseModel):
 
 
 class MetricsResponse(BaseModel):
+    """Aggregate quality, cost, and performance metrics."""
     total_runs: int
     avg_quality_score: float
     avg_improvement: float
@@ -136,6 +151,7 @@ class MetricsResponse(BaseModel):
 
 
 class HealthResponse(BaseModel):
+    """System health response for provider, RAG, and database checks."""
     status: str
     provider: str
     model: str
@@ -147,6 +163,7 @@ class HealthResponse(BaseModel):
 # ── Conversion helpers ─────────────────────────────────────────────────────────
 
 def _score_to_grade(score: float) -> str:
+    """Convert a numeric quality score to a letter grade."""
     if score >= 90:
         return "A"
     if score >= 80:
@@ -159,6 +176,7 @@ def _score_to_grade(score: float) -> str:
 
 
 def audit_to_response(audit) -> AuditResponse:
+    """Convert an internal audit report into its API response schema."""
     return AuditResponse(
         sku=audit.sku,
         retailer=audit.retailer,
@@ -173,6 +191,7 @@ def audit_to_response(audit) -> AuditResponse:
 
 
 def competitor_to_response(competitors) -> CompetitorResponse:
+    """Convert internal competitor findings into the API response schema."""
     return CompetitorResponse(
         category=competitors.category,
         top_keywords=[
@@ -192,6 +211,7 @@ def competitor_to_response(competitors) -> CompetitorResponse:
 
 
 def content_to_response(content) -> ContentResponse:
+    """Convert generated content into the API response schema."""
     return ContentResponse(
         sku=content.sku,
         retailer=content.retailer,
@@ -212,6 +232,7 @@ def content_to_response(content) -> ContentResponse:
 
 
 def result_to_response(result) -> OptimizeResponse:
+    """Convert a full optimization result into the public API schema."""
     return OptimizeResponse(
         run_id=result.run_id,
         sku=result.sku,

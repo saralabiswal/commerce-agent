@@ -6,6 +6,8 @@ Tools:
   check_compliance(content, ret)   → retailer compliance validation
   check_brand_safety(content)      → brand safety flag detection
   diff_content(old, new)           → structured diff with improvement metrics
+
+Owner: Sarala Biswal
 """
 import re
 from dataclasses import dataclass, field
@@ -54,6 +56,7 @@ def _flesch_simple(text: str) -> float:
 
 @dataclass
 class ScoreBreakdown:
+    """Structured score components for listing content quality."""
     total: float
     title_compliance: float
     bullet_compliance: float
@@ -349,6 +352,7 @@ def diff_content(old_content: dict, new_content: dict) -> dict:
     Compare old and new content versions with structured improvement metrics.
     """
     def _field_diff(old: str, new: str, field_name: str) -> dict:
+        """Compare a single text field and return length/change metadata."""
         return {
             "field": field_name,
             "old_length": len(old),
@@ -384,6 +388,7 @@ def diff_content(old_content: dict, new_content: dict) -> dict:
 
 
 def _score_to_grade(score: float) -> str:
+    """Convert a numeric quality score to a letter grade."""
     if score >= 90:
         return "A"
     elif score >= 80:
@@ -407,6 +412,7 @@ TOOLS = {
 
 
 def call_tool(tool_name: str, **kwargs) -> dict:
+    """Dispatch a scoring tool by name and return its result or error."""
     if tool_name not in TOOLS:
         return {"error": f"Unknown tool: {tool_name}. Available: {list(TOOLS.keys())}"}
     try:
@@ -425,10 +431,12 @@ if __name__ == "__main__":
 
     @app.get("/tools")
     def list_tools():
+        """Return the registered scoring tool names."""
         return {"tools": list(TOOLS.keys())}
 
     @app.post("/call/{tool_name}")
     def call(tool_name: str, args: dict):
+        """Invoke a registered scoring tool from the HTTP wrapper."""
         return call_tool(tool_name, **args)
 
     uvicorn.run(app, host="0.0.0.0", port=settings.scoring_mcp_port)

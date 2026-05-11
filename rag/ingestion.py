@@ -3,6 +3,8 @@ RAG ingestion pipeline.
 Stores document chunks in ChromaDB with local sentence-transformers embeddings.
 
 Run once after setup: python rag/ingestion.py
+
+Owner: Sarala Biswal
 """
 import os
 import sys
@@ -20,6 +22,7 @@ BATCH_SIZE = 32
 
 
 def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) -> list[str]:
+    """Split text into overlapping chunks while preferring sentence boundaries."""
     if size <= 0:
         raise ValueError("chunk size must be positive")
     if overlap < 0:
@@ -44,6 +47,7 @@ def chunk_text(text: str, size: int = CHUNK_SIZE, overlap: int = CHUNK_OVERLAP) 
 
 
 def load_documents() -> list[dict]:
+    """Load RAG source documents from disk with category metadata."""
     docs = []
     for path in sorted(DOCUMENTS_DIR.rglob("*.txt")):
         text = path.read_text(encoding="utf-8")

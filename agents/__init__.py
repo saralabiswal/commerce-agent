@@ -1,4 +1,7 @@
-"""Public agent package exports for CommerceAgent workflows."""
+"""Public agent package exports for CommerceAgent workflows.
+
+Owner: Sarala Biswal
+"""
 
 from agents.competitor_analysis_agent import CompetitorAnalysisAgent
 from agents.content_audit_agent import ContentAuditAgent

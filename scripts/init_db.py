@@ -2,6 +2,8 @@
 Database initialization — creates SQLite schema for runs and human_feedback tables.
 Run once: python scripts/init_db.py
 Also called on API startup via lifespan hook.
+
+Owner: Sarala Biswal
 """
 import asyncio
 import logging

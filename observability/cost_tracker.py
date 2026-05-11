@@ -1,6 +1,8 @@
 """
 Cost tracker — estimates token costs per provider/model.
 Logged to SQLite for aggregate cost reporting in the dashboard.
+
+Owner: Sarala Biswal
 """
 from llm.base import LLMProvider
 
@@ -26,7 +28,10 @@ _STAGE_TOKEN_ESTIMATES = {
 
 
 class CostTracker:
+    """Estimate token costs for configured LLM provider usage."""
+
     def __init__(self, provider: LLMProvider):
+        """Initialize cost tracking for a provider instance."""
         self._provider = provider
 
     def estimate_token_cost(self, input_tokens: int, output_tokens: int) -> float:

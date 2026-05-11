@@ -3,6 +3,8 @@ Tests for the LangGraph orchestrator.
 
 The goal is to prove graph-level control flow terminates safely even when one
 agent keeps failing, because that is the highest-risk behavior in production.
+
+Owner: Sarala Biswal
 """
 from __future__ import annotations
 
@@ -34,13 +36,16 @@ class StaticProvider(LLMProvider):
 
     @property
     def provider_name(self) -> str:
+        """Return the static provider name for orchestrator tests."""
         return "test"
 
     @property
     def model_name(self) -> str:
+        """Return the static model name for orchestrator tests."""
         return "test-model"
 
     async def complete(self, messages, system=None, temperature=0.3, max_tokens=2048):
+        """Return an empty JSON response for unused LLM calls."""
         return LLMResponse(content=json.dumps({}), model=self.model_name)
 
 
@@ -48,6 +53,7 @@ class StaticAuditAgent:
     """Returns the smallest audit payload needed by downstream nodes."""
 
     async def run(self, sku: str, retailer: str) -> AuditReport:
+        """Return a deterministic audit report."""
         return AuditReport(
             sku=sku,
             retailer=retailer,
@@ -65,6 +71,7 @@ class StaticCompetitorAgent:
     """Returns a valid competitor report without calling the LLM."""
 
     async def run(self, category: str, retailer: str, current_listing=None) -> CompetitorReport:
+        """Return a deterministic competitor report."""
         return CompetitorReport(
             category=category,
             top_keywords=[],
@@ -79,6 +86,7 @@ class FailingGenerationAgent:
     """Always raises to exercise the quality gate failure path."""
 
     async def run(self, **kwargs):
+        """Raise a generation failure for error-path testing."""
         raise RuntimeError("generation unavailable")
 
 
@@ -86,6 +94,7 @@ class LowQualityGenerationAgent:
     """Returns low-scoring content so the quality gate retries and then exits."""
 
     async def run(self, sku: str, retailer: str, retry_count: int = 0, **kwargs):
+        """Return deterministic low-quality content for retry-path testing."""
         return GeneratedContent(
             sku=sku,
             retailer=retailer,
@@ -115,6 +124,7 @@ async def test_graph_stops_after_generation_failures(monkeypatch):
     orchestrator.generation_agent = FailingGenerationAgent()
 
     async def noop_end_run(*args, **kwargs):
+        """Disable persistence for this orchestrator test."""
         return None
 
     monkeypatch.setattr(orchestrator.tracer, "end_run", noop_end_run)
@@ -138,6 +148,7 @@ async def test_graph_exits_after_quality_gate_max_retries(monkeypatch):
     orchestrator.generation_agent = LowQualityGenerationAgent()
 
     async def noop_end_run(*args, **kwargs):
+        """Disable persistence for this orchestrator test."""
         return None
 
     monkeypatch.setattr(orchestrator.tracer, "end_run", noop_end_run)
@@ -161,6 +172,7 @@ async def test_progress_callback_reports_pipeline_stages(monkeypatch):
     orchestrator.generation_agent = LowQualityGenerationAgent()
 
     async def noop_end_run(*args, **kwargs):
+        """Disable persistence for this orchestrator test."""
         return None
 
     monkeypatch.setattr(orchestrator.tracer, "end_run", noop_end_run)

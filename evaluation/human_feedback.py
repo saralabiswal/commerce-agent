@@ -1,6 +1,8 @@
 """
 Human feedback interface — thumbs up/down + comments stored in SQLite.
 Demonstrates the feedback loop architecture even without model training.
+
+Owner: Sarala Biswal
 """
 import logging
 from datetime import UTC, datetime
@@ -15,6 +17,7 @@ class HumanFeedbackStore:
     """
 
     def __init__(self, db_url: str | None = None):
+        """Initialize the feedback store against the configured SQLite database."""
         from config import settings
         self._db_url = db_url or settings.database_url
         # Extract path from sqlite+aiosqlite:///./path

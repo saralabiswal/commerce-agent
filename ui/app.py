@@ -2,6 +2,8 @@
 CommerceAgent — Streamlit Dashboard
 Provides a full UI for optimizing product listings, viewing results,
 run history, metrics, and submitting human feedback.
+
+Owner: Sarala Biswal
 """
 import asyncio
 import os
@@ -37,6 +39,7 @@ def run_async(coro):
 
 
 def score_color(score: float) -> str:
+    """Return dashboard status color for a numeric quality score."""
     if score >= 80:
         return "#22c55e"
     if score >= 70:
@@ -45,10 +48,12 @@ def score_color(score: float) -> str:
 
 
 def grade_emoji(grade: str) -> str:
+    """Return the visual status marker associated with a letter grade."""
     return {"A": "🏆", "B": "✅", "C": "⚠️", "D": "🔴", "F": "❌"}.get(grade, "")
 
 
 def severity_badge(severity: str) -> str:
+    """Render a compact HTML badge for an audit severity level."""
     colors = {"critical": "#ef4444", "high": "#f97316", "medium": "#f59e0b", "low": "#6b7280"}
     color = colors.get(severity, "#6b7280")
     return f'<span style="background:{color};color:white;padding:2px 8px;border-radius:4px;font-size:12px">{severity.upper()}</span>'
@@ -146,6 +151,7 @@ if page == "Optimize":
         }
 
         def update_progress(stage: str, message: str):
+            """Record and render the latest pipeline progress update."""
             progress_events.append((stage, message))
             with progress_area.container():
                 st.progress(progress_steps.get(stage, 10), text=f"{stage}: {message}")

@@ -1,6 +1,8 @@
 """
 /optimize — full pipeline: audit + competitor analysis + content generation.
 The primary endpoint for the CommerceAgent platform.
+
+Owner: Sarala Biswal
 """
 from fastapi import APIRouter, HTTPException
 

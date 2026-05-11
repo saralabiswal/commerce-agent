@@ -11,6 +11,8 @@ Workflow graph::
 
 Why LangGraph over chains: the quality gate loop and parallel-ready structure require
 a graph, not a linear chain. State is explicit, transitions are debuggable (ADR-002).
+
+Owner: Sarala Biswal
 """
 import logging
 import uuid
@@ -58,6 +60,7 @@ class CommerceAgentOrchestrator:
     """
 
     def __init__(self, provider: LLMProvider):
+        """Create the orchestrator and initialize all pipeline agents."""
         self.provider = provider
         self.audit_agent = ContentAuditAgent(provider)
         self.competitor_agent = CompetitorAnalysisAgent(provider)

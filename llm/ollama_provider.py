@@ -4,6 +4,8 @@ Best for development and privacy-sensitive deployments.
 
 Install: https://ollama.ai
 Then: ollama pull llama3
+
+Owner: Sarala Biswal
 """
 import time
 
@@ -26,15 +28,18 @@ class OllamaProvider(LLMProvider):
         base_url: str | None = None,
         model: str | None = None,
     ):
+        """Initialize connection settings for the local Ollama server."""
         self._base_url = (base_url or settings.ollama_base_url).rstrip("/")
         self._model = model or settings.ollama_model
 
     @property
     def provider_name(self) -> str:
+        """Return the provider identifier used in configuration and logs."""
         return "ollama"
 
     @property
     def model_name(self) -> str:
+        """Return the active Ollama model name."""
         return self._model
 
     async def complete(
@@ -44,6 +49,7 @@ class OllamaProvider(LLMProvider):
         temperature: float = 0.3,
         max_tokens: int = 2048,
     ) -> LLMResponse:
+        """Generate a chat completion through Ollama's local API."""
         ollama_messages = []
         if system:
             ollama_messages.append({"role": "system", "content": system})

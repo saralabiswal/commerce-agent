@@ -1,6 +1,8 @@
 """
 Abstract base class for all LLM providers.
 Every provider implements this interface — zero agent code changes when switching models.
+
+Owner: Sarala Biswal
 """
 from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
@@ -9,12 +11,14 @@ from typing import Any
 
 @dataclass
 class Message:
+    """Single chat message sent to an LLM provider."""
     role: str  # "user" | "assistant" | "system"
     content: str
 
 
 @dataclass
 class LLMResponse:
+    """Normalized response returned by every LLM provider implementation."""
     content: str
     model: str
     input_tokens: int = 0
@@ -24,6 +28,7 @@ class LLMResponse:
 
     @property
     def total_tokens(self) -> int:
+        """Return total input and output token usage."""
         return self.input_tokens + self.output_tokens
 
     @property
@@ -122,4 +127,5 @@ class LLMProvider(ABC):
             }
 
     def __repr__(self) -> str:
+        """Return a concise provider representation for logs and debugging."""
         return f"{self.__class__.__name__}(model={self.model_name})"

@@ -11,6 +11,8 @@ Metrics tracked:
   brand_safety        — 0 prohibited term flags
   specificity         — concrete claims vs vague language
   improvement_delta   — new score vs old score
+
+Owner: Sarala Biswal
 """
 import re
 from dataclasses import dataclass
@@ -25,6 +27,7 @@ except Exception:
 
 
 def _count_syllables_simple(word: str) -> int:
+    """Estimate syllable count without external dependencies."""
     word = word.lower().strip(".,!?;:")
     if not word:
         return 0
@@ -40,6 +43,7 @@ def _count_syllables_simple(word: str) -> int:
 
 
 def _flesch_simple(text: str) -> float:
+    """Calculate a fallback Flesch reading ease score."""
     import re
     sentences = max(1, len(re.findall(r"[.!?]+", text)))
     words = text.split()
@@ -52,6 +56,7 @@ def _flesch_simple(text: str) -> float:
 
 @dataclass
 class MetricResult:
+    """Result for one automated content quality metric."""
     name: str
     score: float          # 0-100
     passed: bool          # Met target threshold
@@ -62,6 +67,7 @@ class MetricResult:
 
 @dataclass
 class ContentScoreReport:
+    """Aggregate scoring report returned by the content scorer."""
     overall_score: float
     grade: str
     metrics: list[MetricResult]
@@ -71,10 +77,12 @@ class ContentScoreReport:
 
     @property
     def passed_metrics(self) -> list[MetricResult]:
+        """Return metrics that met their target thresholds."""
         return [m for m in self.metrics if m.passed]
 
     @property
     def failed_metrics(self) -> list[MetricResult]:
+        """Return metrics that failed their target thresholds."""
         return [m for m in self.metrics if not m.passed]
 
 
@@ -158,6 +166,7 @@ class ContentScorer:
         )
 
     def _score_title_compliance(self, content: dict, requirements: dict) -> MetricResult:
+        """Score title length and prohibited-word compliance."""
         title = content.get("title", "")
         title_rules = requirements.get("title", {})
         max_chars = title_rules.get("max_chars", 200)
@@ -187,6 +196,7 @@ class ContentScorer:
         )
 
     def _score_keyword_inclusion(self, content: dict, requirements: dict) -> MetricResult:
+        """Score whether high-volume keywords appear in generated content."""
         benchmarks = requirements.get("search_volume_benchmarks", {})
         if not benchmarks:
             return MetricResult(
@@ -216,6 +226,7 @@ class ContentScorer:
         )
 
     def _score_bullet_count(self, content: dict, requirements: dict) -> MetricResult:
+        """Score whether the listing has the required number of bullets."""
         bullets = content.get("bullet_points", [])
         expected = requirements.get("bullet_points", {}).get("count", 5)
         passed = len(bullets) == expected
@@ -229,6 +240,7 @@ class ContentScorer:
         )
 
     def _score_bullet_length(self, content: dict, requirements: dict) -> MetricResult:
+        """Score whether each bullet fits retailer character limits."""
         bullets = content.get("bullet_points", [])
         max_chars = requirements.get("bullet_points", {}).get("max_chars_each", 255)
         violations = [
@@ -247,6 +259,7 @@ class ContentScorer:
         )
 
     def _score_readability(self, content: dict) -> MetricResult:
+        """Score generated content readability for consumer-facing copy."""
         title = content.get("title", "")
         bullets = content.get("bullet_points", [])
         description = content.get("description", "")
@@ -279,6 +292,7 @@ class ContentScorer:
     def _score_brand_safety(
         self, content: dict, brand_guidelines: dict | None
     ) -> MetricResult:
+        """Score brand safety using configured prohibited terms and claims."""
         from mcp_servers.scoring_mcp_server import check_brand_safety
         result = check_brand_safety(content, brand_guidelines)
         passed = result["passed"]
@@ -292,6 +306,7 @@ class ContentScorer:
         )
 
     def _score_specificity(self, content: dict) -> MetricResult:
+        """Score the ratio of specific claims to vague marketing language."""
         title = content.get("title", "")
         bullets = content.get("bullet_points", [])
         description = content.get("description", "")
@@ -323,6 +338,7 @@ class ContentScorer:
     def _score_improvement_delta(
         self, new_score: float, previous_score: float
     ) -> MetricResult:
+        """Score whether generated content improves over the baseline."""
         delta = new_score - previous_score
         passed = delta > 0
         return MetricResult(
@@ -335,6 +351,7 @@ class ContentScorer:
         )
 
     def _compute_weighted_score(self, metrics: list[MetricResult]) -> float:
+        """Combine metric scores using the scorer's fixed weights."""
         weights = {
             "title_compliance": 0.20,
             "keyword_inclusion": 0.20,
@@ -354,6 +371,7 @@ class ContentScorer:
         return weighted_sum / total_weight if total_weight > 0 else 0.0
 
     def _to_grade(self, score: float) -> str:
+        """Convert a numeric score into a letter grade."""
         if score >= 90:
             return "A"
         if score >= 80:

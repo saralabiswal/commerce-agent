@@ -6,6 +6,8 @@ Tools:
   get_brand_guidelines(brand)      → tone, prohibited claims, required disclaimers
   get_competitor_listings(asin)    → top 5 competitor listings for category
   get_historical_content(sku)      → previous content versions + performance
+
+Owner: Sarala Biswal
 """
 import json
 from pathlib import Path
@@ -17,6 +19,7 @@ SKU_ALIASES = {
 
 
 def _load_json(filename: str) -> dict:
+    """Load a mock catalog data file from the MCP data directory."""
     with open(DATA_DIR / filename) as f:
         return json.load(f)
 
@@ -181,10 +184,12 @@ if __name__ == "__main__":
 
     @app.get("/tools")
     def list_tools():
+        """Return the registered catalog tool names."""
         return {"tools": list(TOOLS.keys())}
 
     @app.post("/call/{tool_name}")
     def call(tool_name: str, args: dict):
+        """Invoke a registered catalog tool from the HTTP wrapper."""
         return call_tool(tool_name, **args)
 
     uvicorn.run(app, host="0.0.0.0", port=settings.catalog_mcp_port)

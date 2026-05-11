@@ -1,5 +1,7 @@
 """
 Shared pytest fixtures for CommerceAgent tests.
+
+Owner: Sarala Biswal
 """
 import asyncio
 import os
@@ -32,17 +34,22 @@ def mock_provider():
     from llm.base import LLMProvider, LLMResponse
 
     class MockProvider(LLMProvider):
+        """Mock LLM provider that returns configured deterministic responses."""
+
         def __init__(self):
+            """Initialize response registry and call tracking state."""
             self._responses = {}  # keyword → response
             self._call_count = 0
             self.last_messages = []
 
         @property
         def provider_name(self) -> str:
+            """Return the mock provider name."""
             return "mock"
 
         @property
         def model_name(self) -> str:
+            """Return the mock model name."""
             return "mock-model"
 
         def set_response(self, keyword: str, response: str):
@@ -50,6 +57,7 @@ def mock_provider():
             self._responses[keyword] = response
 
         async def complete(self, messages, system=None, temperature=0.3, max_tokens=2048):
+            """Return the first configured response matching the prompt."""
             self._call_count += 1
             self.last_messages = messages
 
@@ -81,6 +89,7 @@ def mock_provider():
 
 @pytest.fixture
 def sample_listing():
+    """Return representative weak listing input for tests."""
     return {
         "asin": "DEMO-SKU-001",
         "sku": "DEMO-SKU-001",
@@ -106,6 +115,7 @@ def sample_listing():
 
 @pytest.fixture
 def sample_requirements():
+    """Return representative retailer rules and keyword benchmarks."""
     return {
         "retailer": "amazon",
         "category": "electronics",
@@ -137,6 +147,7 @@ def sample_requirements():
 
 @pytest.fixture
 def sample_product_specs():
+    """Return authoritative product specs used by generation tests."""
     return {
         "sku": "DEMO-SKU-001",
         "brand": "SoundWave",
@@ -165,6 +176,7 @@ def sample_product_specs():
 
 @pytest.fixture
 def sample_optimized_content():
+    """Return representative optimized listing content for scoring tests."""
     return {
         "title": "SoundWave Pro X1 Wireless Bluetooth Headphones — Active Noise Cancellation, 30-Hour Battery, Dual Beamforming Mics, IPX4, Bluetooth 5.2",
         "bullet_points": [

@@ -1,6 +1,8 @@
 """
 OpenAI provider — GPT-4 family.
 Optional provider for teams already in the OpenAI ecosystem.
+
+Owner: Sarala Biswal
 """
 import time
 
@@ -27,6 +29,7 @@ class OpenAIProvider(LLMProvider):
         api_key: str | None = None,
         model: str | None = None,
     ):
+        """Initialize the OpenAI async client for the selected chat model."""
         from openai import AsyncOpenAI
 
         self._api_key = api_key or settings.openai_api_key
@@ -35,10 +38,12 @@ class OpenAIProvider(LLMProvider):
 
     @property
     def provider_name(self) -> str:
+        """Return the provider identifier used in configuration and logs."""
         return "openai"
 
     @property
     def model_name(self) -> str:
+        """Return the active OpenAI model name."""
         return self._model
 
     async def complete(
@@ -48,6 +53,7 @@ class OpenAIProvider(LLMProvider):
         temperature: float = 0.3,
         max_tokens: int = 2048,
     ) -> LLMResponse:
+        """Generate an OpenAI chat completion for normalized messages."""
         openai_messages = []
         if system:
             openai_messages.append({"role": "system", "content": system})
@@ -77,6 +83,7 @@ class OpenAIProvider(LLMProvider):
         )
 
     def estimate_cost(self, input_tokens: int, output_tokens: int) -> float:
+        """Estimate OpenAI request cost from input and output token counts."""
         in_rate = _COST_PER_M_INPUT.get(self._model, 2.50)
         out_rate = _COST_PER_M_OUTPUT.get(self._model, 10.00)
         return (input_tokens * in_rate + output_tokens * out_rate) / 1_000_000

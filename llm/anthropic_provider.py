@@ -1,6 +1,8 @@
 """
 Anthropic Claude provider.
 Production default — best reasoning quality for content generation.
+
+Owner: Sarala Biswal
 """
 import time
 from typing import Any
@@ -35,16 +37,19 @@ class AnthropicProvider(LLMProvider):
         api_key: str | None = None,
         model: str | None = None,
     ):
+        """Initialize the Anthropic async client for the selected model."""
         self._api_key = api_key or settings.anthropic_api_key
         self._model = model or settings.anthropic_model
         self._client = anthropic.AsyncAnthropic(api_key=self._api_key)
 
     @property
     def provider_name(self) -> str:
+        """Return the provider identifier used in configuration and logs."""
         return "anthropic"
 
     @property
     def model_name(self) -> str:
+        """Return the active Claude model name."""
         return self._model
 
     async def complete(
@@ -54,6 +59,7 @@ class AnthropicProvider(LLMProvider):
         temperature: float = 0.3,
         max_tokens: int = 2048,
     ) -> LLMResponse:
+        """Generate a Claude completion for normalized chat messages."""
         anthropic_messages = [
             {"role": m.role, "content": m.content}
             for m in messages
@@ -88,9 +94,11 @@ class AnthropicProvider(LLMProvider):
 
     @property
     def estimated_cost_usd(self) -> float:
+        """Return the default estimate when per-call token counts are unavailable."""
         return 0.0
 
     def estimate_cost(self, input_tokens: int, output_tokens: int) -> float:
+        """Estimate Anthropic request cost from input and output token counts."""
         in_rate = _COST_PER_M_INPUT.get(self._model, 3.00)
         out_rate = _COST_PER_M_OUTPUT.get(self._model, 15.00)
         return (input_tokens * in_rate + output_tokens * out_rate) / 1_000_000

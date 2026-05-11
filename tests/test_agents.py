@@ -1,6 +1,8 @@
 """
 Tests for CommerceAgent's three agents.
 Uses mock LLM provider — no real API calls.
+
+Owner: Sarala Biswal
 """
 import json
 
@@ -14,8 +16,10 @@ from agents.models import AuditReport, CompetitorReport, Gap, GeneratedContent
 # ── ContentAuditAgent ─────────────────────────────────────────────────────────
 
 class TestContentAuditAgent:
+    """Coverage for content audit agent behavior and fallback handling."""
 
     def _gap_response(self) -> str:
+        """Return mock JSON gap analysis for audit tests."""
         return json.dumps([
             {
                 "field": "title",
@@ -101,6 +105,7 @@ class TestContentAuditAgent:
         mock_provider._responses = {}
 
         async def bad_complete(messages, system=None, temperature=0.3, max_tokens=2048):
+            """Return malformed JSON to exercise fallback parsing."""
             return LLMResponse(
                 content="not valid json {{ broken",
                 model="mock",
@@ -120,8 +125,10 @@ class TestContentAuditAgent:
 # ── CompetitorAnalysisAgent ───────────────────────────────────────────────────
 
 class TestCompetitorAnalysisAgent:
+    """Coverage for competitor analysis outputs and keyword handling."""
 
     def _analysis_response(self) -> str:
+        """Return mock JSON competitor analysis for agent tests."""
         return json.dumps({
             "winning_patterns": [
                 "Title starts with brand + product type + key differentiator",
@@ -208,8 +215,10 @@ class TestCompetitorAnalysisAgent:
 # ── ContentGenerationAgent ────────────────────────────────────────────────────
 
 class TestContentGenerationAgent:
+    """Coverage for generated content shape, scoring, and validation metadata."""
 
     def _generation_response(self) -> str:
+        """Return mock JSON generated content for generation tests."""
         return json.dumps({
             "title": "SoundWave Pro X1 Wireless Bluetooth Headphones — 30-Hr Battery, Active Noise Cancellation, IPX4, Bluetooth 5.2",
             "bullet_points": [

@@ -6,6 +6,8 @@ Checks:
   brand_safety             — prohibited claims and terms
   pii_detection            — personal data in product content
   retailer_compliance      — hard rule violations
+
+Owner: Sarala Biswal
 """
 import logging
 import re
@@ -16,6 +18,7 @@ logger = logging.getLogger(__name__)
 
 @dataclass
 class GuardrailResult:
+    """Result of running safety and accuracy guardrail checks."""
     passed: bool
     checks: dict[str, bool]
     violations: list[dict]
@@ -23,10 +26,12 @@ class GuardrailResult:
 
     @property
     def critical_violations(self) -> list[dict]:
+        """Return guardrail violations that must block content."""
         return [v for v in self.violations if v.get("severity") == "critical"]
 
     @property
     def warning_violations(self) -> list[dict]:
+        """Return guardrail violations that should be surfaced as warnings."""
         return [v for v in self.violations if v.get("severity") == "warning"]
 
 
@@ -39,6 +44,7 @@ class Guardrails:
     """
 
     def __init__(self):
+        """Load guardrail settings from application configuration."""
         from config import settings
         self._settings = settings
 

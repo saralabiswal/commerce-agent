@@ -1,6 +1,8 @@
 """
 RAG retrieval — semantic search over ChromaDB stored chunks.
 Uses local sentence-transformers embeddings by default.
+
+Owner: Sarala Biswal
 """
 import os
 import sys
@@ -18,6 +20,7 @@ class RAGRetriever:
     """
 
     def __init__(self, persist_dir: str | None = None):
+        """Initialize retriever configuration without opening Chroma immediately."""
         self._persist_dir = persist_dir or settings.chroma_persist_dir
         self._embedding_model = get_embedding_model()
         self._collection = None
@@ -125,12 +128,14 @@ class RAGRetriever:
 
     @property
     def document_count(self) -> int:
+        """Return the number of indexed RAG document chunks."""
         self._ensure_collection()
         return self._collection.count()
 
 
 @lru_cache(maxsize=1)
 def get_retriever() -> RAGRetriever:
+    """Return the process-local cached RAG retriever."""
     return RAGRetriever()
 
 

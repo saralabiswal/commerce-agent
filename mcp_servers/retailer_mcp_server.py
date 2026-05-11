@@ -9,6 +9,8 @@ Tools:
 
 Design note: MCP over direct function calls gives us versioning, access control,
 and tool reusability across agents without tight coupling (see ADR-001).
+
+Owner: Sarala Biswal
 """
 import json
 import random
@@ -21,6 +23,7 @@ SKU_ALIASES = {
 
 
 def _load_json(filename: str) -> dict:
+    """Load a mock retailer data file from the MCP data directory."""
     with open(DATA_DIR / filename) as f:
         return json.load(f)
 
@@ -213,10 +216,12 @@ if __name__ == "__main__":
 
     @app.get("/tools")
     def list_tools():
+        """Return the registered retailer tool names."""
         return {"tools": list(TOOLS.keys())}
 
     @app.post("/call/{tool_name}")
     def call(tool_name: str, args: dict):
+        """Invoke a registered retailer tool from the HTTP wrapper."""
         return call_tool(tool_name, **args)
 
     uvicorn.run(app, host="0.0.0.0", port=settings.retailer_mcp_port)

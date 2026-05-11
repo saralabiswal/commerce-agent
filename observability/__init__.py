@@ -1,4 +1,7 @@
-"""Observability exports for tracing, guardrails, and cost tracking."""
+"""Observability exports for tracing, guardrails, and cost tracking.
+
+Owner: Sarala Biswal
+"""
 
 from observability.cost_tracker import CostTracker
 from observability.guardrails import GuardrailResult, Guardrails

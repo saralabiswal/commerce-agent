@@ -1,14 +1,18 @@
 """
 Tests for all three MCP servers.
 No LLM calls — pure data layer tests.
+
+Owner: Sarala Biswal
 """
 
 
 # ── RetailerMCP ────────────────────────────────────────────────────────────────
 
 class TestRetailerMCP:
+    """Coverage for retailer listing, requirements, volume, and benchmark tools."""
 
     def test_get_listing_known_sku(self):
+        """Known Amazon SKU should return a populated listing."""
         from mcp_servers.retailer_mcp_server import get_listing
         listing = get_listing("ANKER-Q30-BLK", "amazon")
         assert listing["sku"] == "ANKER-Q30-BLK"
@@ -25,11 +29,13 @@ class TestRetailerMCP:
         assert listing["asin"] == "UNKNOWN-9999"
 
     def test_get_listing_walmart(self):
+        """Known Walmart SKU should return a Walmart listing."""
         from mcp_servers.retailer_mcp_server import get_listing
         listing = get_listing("ANKER-Q30-BLK", "walmart")
         assert listing["retailer"] == "walmart"
 
     def test_get_listing_resolves_catalog_sku_alias(self):
+        """Catalog SKU aliases should resolve to the correct retailer listing."""
         from mcp_servers.retailer_mcp_server import get_listing
 
         listing = get_listing("ECHO-DOT-5G-BLK", "amazon")
@@ -38,6 +44,7 @@ class TestRetailerMCP:
         assert listing["brand"] == "Amazon"
 
     def test_get_retailer_requirements_electronics(self):
+        """Electronics requirements should include title and bullet rules."""
         from mcp_servers.retailer_mcp_server import get_retailer_requirements
         reqs = get_retailer_requirements("electronics", "amazon")
         assert "title" in reqs
@@ -53,6 +60,7 @@ class TestRetailerMCP:
         assert reqs.get("_fallback") is True
 
     def test_get_retailer_requirements_walmart_grocery(self):
+        """Walmart grocery requirements should load category-specific rules."""
         from mcp_servers.retailer_mcp_server import get_retailer_requirements
 
         reqs = get_retailer_requirements("grocery", "walmart")
@@ -68,6 +76,7 @@ class TestRetailerMCP:
         assert "best" in prohibited or len(prohibited) > 0
 
     def test_get_search_volume_known_keyword(self):
+        """Known keywords should return benchmark search volume data."""
         from mcp_servers.retailer_mcp_server import get_search_volume
         result = get_search_volume("bluetooth headphones", "amazon")
         assert result["keyword"] == "bluetooth headphones"
@@ -89,6 +98,7 @@ class TestRetailerMCP:
         assert r1["monthly_searches"] == r2["monthly_searches"]
 
     def test_get_category_benchmarks_electronics(self):
+        """Electronics benchmarks should include score targets."""
         from mcp_servers.retailer_mcp_server import get_category_benchmarks
         bm = get_category_benchmarks("electronics", "amazon")
         assert "avg_quality_score" in bm
@@ -105,8 +115,10 @@ class TestRetailerMCP:
 # ── CatalogMCP ────────────────────────────────────────────────────────────────
 
 class TestCatalogMCP:
+    """Coverage for catalog specs, brand guidelines, competitors, and history."""
 
     def test_list_products_returns_friendly_names(self):
+        """Product list should expose friendly names for UI selectors."""
         from mcp_servers.catalog_mcp_server import list_products
 
         products = list_products()
@@ -117,6 +129,7 @@ class TestCatalogMCP:
         assert "Tide PODS Spring Meadow Laundry Detergent Pacs, 96 Count" in product_names
 
     def test_get_product_specs_known_sku(self):
+        """Known SKU should return authoritative specs and guidelines."""
         from mcp_servers.catalog_mcp_server import get_product_specs
         specs = get_product_specs("ANKER-Q30-BLK")
         assert specs["sku"] == "ANKER-Q30-BLK"
@@ -125,6 +138,7 @@ class TestCatalogMCP:
         assert "battery_life" in specs["specifications"]
 
     def test_get_product_specs_real_world_catalog_skus(self):
+        """Additional seeded SKUs should return complete catalog metadata."""
         from mcp_servers.catalog_mcp_server import get_product_specs
 
         echo = get_product_specs("ECHO-DOT-5G-BLK")
@@ -142,6 +156,7 @@ class TestCatalogMCP:
         assert "error" in specs
 
     def test_get_brand_guidelines_known_brand(self):
+        """Known brands should return configured brand guidelines."""
         from mcp_servers.catalog_mcp_server import get_brand_guidelines
         guidelines = get_brand_guidelines("Soundcore")
         assert "tone" in guidelines
@@ -156,6 +171,7 @@ class TestCatalogMCP:
         assert guidelines.get("_fallback") is True
 
     def test_get_competitor_listings_electronics(self):
+        """Electronics competitors should return ranked listing records."""
         from mcp_servers.catalog_mcp_server import get_competitor_listings
         competitors = get_competitor_listings("electronics", limit=3)
         assert isinstance(competitors, list)
@@ -181,6 +197,7 @@ class TestCatalogMCP:
         assert len(competitors) == 0
 
     def test_get_historical_content_known_sku(self):
+        """Known SKU should return historical content versions."""
         from mcp_servers.catalog_mcp_server import get_historical_content
         history = get_historical_content("ANKER-Q30-BLK")
         assert isinstance(history, list)
@@ -200,13 +217,16 @@ class TestCatalogMCP:
 # ── ScoringMCP ────────────────────────────────────────────────────────────────
 
 class TestScoringMCP:
+    """Coverage for content scoring, compliance, safety, diff, and dispatch tools."""
 
     def test_score_content_returns_0_to_100(self, sample_listing, sample_requirements):
+        """Content scoring should return a bounded quality score."""
         from mcp_servers.scoring_mcp_server import score_content
         result = score_content(sample_listing, sample_requirements)
         assert 0 <= result["total_score"] <= 100
 
     def test_score_content_has_breakdown(self, sample_listing, sample_requirements):
+        """Content scoring should include key score dimensions."""
         from mcp_servers.scoring_mcp_server import score_content
         result = score_content(sample_listing, sample_requirements)
         assert "scores" in result
@@ -214,17 +234,20 @@ class TestScoringMCP:
         assert expected_dims.issubset(set(result["scores"].keys()))
 
     def test_score_content_issues_is_list(self, sample_listing, sample_requirements):
+        """Content scoring should return list-shaped issues and suggestions."""
         from mcp_servers.scoring_mcp_server import score_content
         result = score_content(sample_listing, sample_requirements)
         assert isinstance(result["issues"], list)
         assert isinstance(result["suggestions"], list)
 
     def test_score_content_grade(self, sample_listing, sample_requirements):
+        """Content scoring should return a valid letter grade."""
         from mcp_servers.scoring_mcp_server import score_content
         result = score_content(sample_listing, sample_requirements)
         assert result["grade"] in ("A", "B", "C", "D", "F")
 
     def test_score_content_title_too_long_penalized(self, sample_requirements):
+        """Overlong titles should reduce content score or produce issues."""
         from mcp_servers.scoring_mcp_server import score_content
         content = {"title": "A" * 210, "bullet_points": [], "description": "", "backend_keywords": ""}
         result = score_content(content, sample_requirements)
@@ -233,6 +256,7 @@ class TestScoringMCP:
         assert "long" in issues_text or "title" in issues_text or result["total_score"] < 80
 
     def test_score_content_prohibited_word_in_title_penalized(self, sample_requirements):
+        """Prohibited title words should reduce title compliance score."""
         from mcp_servers.scoring_mcp_server import score_content
         content = {
             "title": "The Best Wireless Headphones Ever #1 Guaranteed",
@@ -245,6 +269,7 @@ class TestScoringMCP:
         assert "prohibited" in issues_text or result["scores"]["title_compliance"] < 60
 
     def test_check_compliance_compliant_content(self, sample_requirements):
+        """Compliant content should return structured compliance results."""
         from mcp_servers.scoring_mcp_server import check_compliance
         content = {
             "title": "SoundWave Pro X1 Wireless Bluetooth Headphones Active Noise Cancellation 30Hr",
@@ -264,6 +289,7 @@ class TestScoringMCP:
         assert isinstance(result["violations"], list)
 
     def test_check_compliance_too_many_bullets_fails(self):
+        """Extra bullets should fail bullet count compliance."""
         from mcp_servers.scoring_mcp_server import check_compliance
         content = {
             "title": "SoundWave Headphones",
@@ -276,6 +302,7 @@ class TestScoringMCP:
         assert result["checks"]["bullet_count"] is False
 
     def test_check_brand_safety_clean_content(self):
+        """Clean content should pass brand safety checks."""
         from mcp_servers.scoring_mcp_server import check_brand_safety
         content = {
             "title": "SoundWave Pro X1 Wireless Headphones",
@@ -287,6 +314,7 @@ class TestScoringMCP:
         assert result["flag_count"] == 0
 
     def test_check_brand_safety_medical_claim_flagged(self):
+        """Medical claims should be flagged by brand safety checks."""
         from mcp_servers.scoring_mcp_server import check_brand_safety
         content = {
             "title": "Headphones that cures hearing fatigue",
@@ -298,6 +326,7 @@ class TestScoringMCP:
         assert result["flag_count"] > 0
 
     def test_check_brand_safety_pii_flagged(self):
+        """PII-like content should be flagged by brand safety checks."""
         from mcp_servers.scoring_mcp_server import check_brand_safety
         content = {
             "title": "SoundWave Headphones",
@@ -308,6 +337,7 @@ class TestScoringMCP:
         assert result["flag_count"] > 0
 
     def test_diff_content_changed_fields(self):
+        """Content diff should report changed fields and bullet rewrites."""
         from mcp_servers.scoring_mcp_server import diff_content
         old = {
             "title": "Old title",
@@ -327,11 +357,13 @@ class TestScoringMCP:
         assert result["bullets_changed"] == 2  # Both bullets changed
 
     def test_mcp_call_tool_dispatch(self):
+        """MCP dispatcher should call a known retailer tool."""
         from mcp_servers.retailer_mcp_server import call_tool
         result = call_tool("get_listing", asin="ANKER-Q30-BLK", retailer="amazon")
         assert "title" in result
 
     def test_mcp_call_tool_unknown_tool(self):
+        """MCP dispatcher should return an error for unknown tools."""
         from mcp_servers.retailer_mcp_server import call_tool
         result = call_tool("nonexistent_tool")
         assert "error" in result

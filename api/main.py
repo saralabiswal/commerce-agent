@@ -1,6 +1,8 @@
 """
 CommerceAgent FastAPI application.
 Exposes the agent pipeline as a REST API.
+
+Owner: Sarala Biswal
 """
 import logging
 from contextlib import asynccontextmanager

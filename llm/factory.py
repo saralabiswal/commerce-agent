@@ -5,6 +5,8 @@ Single entry point for creating the configured provider.
 Usage:
     from llm.factory import get_llm_provider
     provider = get_llm_provider()   # reads LLM_PROVIDER from .env
+
+Owner: Sarala Biswal
 """
 from functools import lru_cache
 

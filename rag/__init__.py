@@ -1,4 +1,7 @@
-"""RAG package exports for embedding, ingestion, and retrieval components."""
+"""RAG package exports for embedding, ingestion, and retrieval components.
+
+Owner: Sarala Biswal
+"""
 
 from rag.embeddings import EmbeddingModel, get_embedding_model
 from rag.retrieval import RAGRetriever, get_retriever

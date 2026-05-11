@@ -1,4 +1,7 @@
-"""Tests for local tracing behavior and observability safeguards."""
+"""Tests for local tracing behavior and observability safeguards.
+
+Owner: Sarala Biswal
+"""
 
 from observability.tracing import _has_real_langsmith_key
 

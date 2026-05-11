@@ -1,5 +1,7 @@
 """
 /audit — standalone content audit endpoint.
+
+Owner: Sarala Biswal
 """
 from fastapi import APIRouter, HTTPException
 

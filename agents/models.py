@@ -1,6 +1,8 @@
 """
 Shared Pydantic models for agent inputs, outputs, and orchestrator state.
 These are the contracts between agents — changing them requires updating all consumers.
+
+Owner: Sarala Biswal
 """
 from __future__ import annotations
 
@@ -10,6 +12,7 @@ from typing import Any
 
 @dataclass
 class Gap:
+    """Single content issue found during listing audit."""
     field: str          # "title" | "bullets" | "description" | "keywords"
     issue: str          # Human-readable description of the issue
     severity: str       # "critical" | "high" | "medium" | "low"
@@ -19,6 +22,7 @@ class Gap:
 
 @dataclass
 class AuditReport:
+    """Structured audit output for one SKU and retailer."""
     sku: str
     retailer: str
     current_score: float
@@ -32,6 +36,7 @@ class AuditReport:
 
 @dataclass
 class Keyword:
+    """Keyword candidate with search demand and listing presence metadata."""
     term: str
     monthly_volume: int
     competition: str        # "high" | "medium" | "low"
@@ -40,6 +45,7 @@ class Keyword:
 
 @dataclass
 class CompetitorReport:
+    """Competitive benchmark findings for a product category."""
     category: str
     top_keywords: list[Keyword]
     winning_patterns: list[str]     # Title/bullet patterns that work
@@ -50,6 +56,7 @@ class CompetitorReport:
 
 @dataclass
 class GeneratedContent:
+    """Optimized listing content plus validation and scoring metadata."""
     sku: str
     retailer: str
     title: str

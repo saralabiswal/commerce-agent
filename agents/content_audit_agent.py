@@ -8,6 +8,8 @@ Tools used:
   RetailerMCP.get_listing
   RetailerMCP.get_retailer_requirements
   ScoringMCP.score_content
+
+Owner: Sarala Biswal
 """
 import json
 import logging
@@ -38,9 +40,10 @@ You always base your analysis on actual data — character counts, missing keywo
 compliance violations — not subjective opinions. Your recommendations are specific and
 actionable, not vague suggestions.
 
-Respond only with valid JSON. No markdown fences, no explanation."""
+    Respond only with valid JSON. No markdown fences, no explanation."""
 
     def __init__(self, provider: LLMProvider):
+        """Initialize the audit agent with an LLM provider."""
         self.provider = provider
 
     async def run(self, sku: str, retailer: str = "amazon") -> AuditReport:
@@ -163,6 +166,7 @@ missed opportunities vs category benchmarks. Be specific — not 'improve bullet
     def _compute_character_counts(
         self, listing: dict, requirements: dict
     ) -> dict[str, dict]:
+        """Measure listing field lengths against retailer character limits."""
         counts = {}
 
         title = listing.get("title", "")

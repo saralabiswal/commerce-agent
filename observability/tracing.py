@@ -1,6 +1,8 @@
 """
 Observability tracing — LangSmith integration + local SQLite fallback.
 Every production AI system needs observability (ADR — production thinking).
+
+Owner: Sarala Biswal
 """
 import json
 import logging
@@ -27,6 +29,7 @@ class Tracer:
     """
 
     def __init__(self):
+        """Initialize LangSmith environment state and SQLite persistence path."""
         from config import settings
 
         self._settings = settings
@@ -155,4 +158,5 @@ class Tracer:
 
 @lru_cache(maxsize=1)
 def get_tracer() -> Tracer:
+    """Return the singleton tracer used by API and orchestrator code."""
     return Tracer()

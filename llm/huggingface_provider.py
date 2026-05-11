@@ -6,6 +6,8 @@ Provider modes:
 - huggingface_local: Downloads and runs model weights locally. Good for
   air-gapped or GPU-equipped environments.
 - huggingface_api: Calls HF Inference API. No GPU needed, but requires API key.
+
+Owner: Sarala Biswal
 """
 import time
 from typing import Any
@@ -29,6 +31,7 @@ class HuggingFaceLocalProvider(LLMProvider):
         model: str | None = None,
         device: str | None = None,
     ):
+        """Initialize local HuggingFace model settings without loading weights."""
         self._model_name = model or settings.hf_model
         self._device = device or settings.hf_device
         self._pipeline: Any = None  # lazy-loaded on first call
@@ -49,10 +52,12 @@ class HuggingFaceLocalProvider(LLMProvider):
 
     @property
     def provider_name(self) -> str:
+        """Return the provider identifier used in configuration and logs."""
         return "huggingface_local"
 
     @property
     def model_name(self) -> str:
+        """Return the active local HuggingFace model name."""
         return self._model_name
 
     async def complete(
@@ -62,6 +67,7 @@ class HuggingFaceLocalProvider(LLMProvider):
         temperature: float = 0.3,
         max_tokens: int = 2048,
     ) -> LLMResponse:
+        """Generate a completion with a local transformers pipeline."""
         import asyncio
 
         if self._pipeline is None:
@@ -112,16 +118,19 @@ class HuggingFaceAPIProvider(LLMProvider):
         api_key: str | None = None,
         model: str | None = None,
     ):
+        """Initialize HuggingFace Inference API credentials and model settings."""
         self._api_key = api_key or settings.hf_api_key
         self._model_name = model or settings.hf_api_model
         self._base_url = "https://api-inference.huggingface.co/models"
 
     @property
     def provider_name(self) -> str:
+        """Return the provider identifier used in configuration and logs."""
         return "huggingface_api"
 
     @property
     def model_name(self) -> str:
+        """Return the active hosted HuggingFace model name."""
         return self._model_name
 
     async def complete(
@@ -131,6 +140,7 @@ class HuggingFaceAPIProvider(LLMProvider):
         temperature: float = 0.3,
         max_tokens: int = 2048,
     ) -> LLMResponse:
+        """Generate a completion using the HuggingFace Inference API."""
         import httpx
 
         # Build text prompt (HF Inference API uses raw text, not chat format)

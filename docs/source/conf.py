@@ -1,4 +1,7 @@
-"""Sphinx configuration for CommerceAgent technical documentation."""
+"""Sphinx configuration for CommerceAgent technical documentation.
+
+Owner: Sarala Biswal
+"""
 
 from __future__ import annotations
 
@@ -96,5 +99,6 @@ def _skip_internal_members(
 
 
 def setup(app: Any) -> None:
+    """Register Sphinx hooks that polish generated API pages."""
     app.connect("autodoc-skip-member", _skip_internal_members)
     app.connect("autodoc-process-signature", _format_signature)

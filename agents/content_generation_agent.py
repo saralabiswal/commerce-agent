@@ -11,6 +11,8 @@ Tools used:
   ScoringMCP.score_content
   ScoringMCP.check_compliance
   ScoringMCP.check_brand_safety
+
+Owner: Sarala Biswal
 """
 import json
 import logging
@@ -51,9 +53,10 @@ Amazon and Walmart product listings. You write content that:
 You are given authoritative product specs — only use facts from these specs.
 Never hallucinate product features, specifications, or claims.
 
-Respond only with valid JSON. No markdown fences, no explanation."""
+    Respond only with valid JSON. No markdown fences, no explanation."""
 
     def __init__(self, provider: LLMProvider):
+        """Initialize generation dependencies for LLM and RAG retrieval."""
         self.provider = provider
         self.retriever = get_retriever()
 
@@ -163,6 +166,7 @@ Respond only with valid JSON. No markdown fences, no explanation."""
         rag_context: str,
         retry_feedback: str,
     ) -> str:
+        """Assemble the grounded prompt used to generate optimized content."""
         # Format top keywords
         keyword_list = ", ".join([
             f"{k.term} ({k.monthly_volume:,}/mo)"

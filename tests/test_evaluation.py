@@ -1,13 +1,17 @@
 """
 Tests for the evaluation framework — ContentScorer and HumanFeedbackStore.
+
+Owner: Sarala Biswal
 """
 import pytest
 
 # ── ContentScorer ─────────────────────────────────────────────────────────────
 
 class TestContentScorer:
+    """Coverage for scoring dimensions, thresholds, and grade mapping."""
 
     def test_score_returns_report(self, sample_optimized_content, sample_requirements):
+        """Scoring optimized content should return a bounded report."""
         from evaluation.content_scorer import ContentScorer, ContentScoreReport
         scorer = ContentScorer()
         report = scorer.score(sample_optimized_content, sample_requirements, previous_score=58.0)
@@ -29,6 +33,7 @@ class TestContentScorer:
         assert expected.issubset(metric_names)
 
     def test_score_title_too_long_fails(self, sample_requirements):
+        """Titles over the retailer limit should fail title compliance."""
         from evaluation.content_scorer import ContentScorer
         scorer = ContentScorer()
         bad_content = {
@@ -42,6 +47,7 @@ class TestContentScorer:
         assert not title_metric.passed
 
     def test_score_bullet_count_wrong_fails(self, sample_requirements):
+        """Incorrect bullet counts should fail bullet count scoring."""
         from evaluation.content_scorer import ContentScorer
         scorer = ContentScorer()
         bad_content = {
@@ -75,6 +81,7 @@ class TestContentScorer:
         assert kw_metric.score >= 80
 
     def test_score_brand_safety_medical_claim_fails(self, sample_requirements):
+        """Medical claims should fail brand safety scoring."""
         from evaluation.content_scorer import ContentScorer
         scorer = ContentScorer()
         content = {
@@ -148,6 +155,7 @@ class TestContentScorer:
 # ── HumanFeedbackStore ────────────────────────────────────────────────────────
 
 class TestHumanFeedbackStore:
+    """Coverage for persistence and aggregation of human feedback."""
 
     @pytest.mark.asyncio
     async def test_record_and_retrieve_feedback(self, temp_db):

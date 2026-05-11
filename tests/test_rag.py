@@ -3,6 +3,8 @@ Tests for the sentence-transformers RAG pipeline.
 
 These tests use a tiny fake embedding model so CI verifies Chroma behavior without
 downloading model weights or depending on Hugging Face availability.
+
+Owner: Sarala Biswal
 """
 from __future__ import annotations
 
@@ -14,11 +16,13 @@ class FakeEmbeddingModel:
     dimension = 3
 
     def embed(self, texts: str | list[str]) -> list[list[float]]:
+        """Embed one or many texts with deterministic fake vectors."""
         if isinstance(texts, str):
             texts = [texts]
         return [self.embed_one(text) for text in texts]
 
     def embed_one(self, text: str) -> list[float]:
+        """Return a deterministic fake vector for one text value."""
         text = text.lower()
         if "amazon" in text or "title" in text:
             return [1.0, 0.0, 0.0]

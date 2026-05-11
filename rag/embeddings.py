@@ -1,6 +1,8 @@
 """
 Embedding model wrapper.
 Uses sentence-transformers locally — no API key, no cost, runs anywhere.
+
+Owner: Sarala Biswal
 """
 from functools import lru_cache
 
@@ -14,10 +16,12 @@ class EmbeddingModel:
     """
 
     def __init__(self, model_name: str | None = None):
+        """Store embedding model configuration for lazy initialization."""
         self._model_name = model_name or settings.embedding_model
         self._model = None  # lazy load
 
     def _load(self):
+        """Load the sentence-transformers model into memory."""
         from sentence_transformers import SentenceTransformer
         self._model = SentenceTransformer(self._model_name)
 
@@ -46,6 +50,7 @@ class EmbeddingModel:
 
     @property
     def model_name(self) -> str:
+        """Return the configured embedding model identifier."""
         return self._model_name
 
     @property

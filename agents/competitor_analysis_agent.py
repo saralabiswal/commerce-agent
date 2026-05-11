@@ -7,6 +7,8 @@ Output: CompetitorReport with top keywords, winning patterns, and content gaps
 Tools used:
   CatalogMCP.get_competitor_listings
   RetailerMCP.get_search_volume
+
+Owner: Sarala Biswal
 """
 import json
 import logging
@@ -34,9 +36,10 @@ strategies that distinguish top-performing listings from average ones.
 Your analysis is data-driven and specific. You identify patterns that can be replicated,
 not vague observations like "their content is better."
 
-Respond only with valid JSON. No markdown fences, no explanation."""
+    Respond only with valid JSON. No markdown fences, no explanation."""
 
     def __init__(self, provider: LLMProvider):
+        """Initialize the agent with the configured LLM provider."""
         self.provider = provider
 
     async def run(
@@ -213,6 +216,7 @@ Provide 4-6 winning patterns and 4-6 content gaps."""
         return keyword.lower() in text
 
     def _empty_report(self, category: str) -> CompetitorReport:
+        """Return an empty competitor report when no benchmark data exists."""
         return CompetitorReport(
             category=category,
             top_keywords=[],

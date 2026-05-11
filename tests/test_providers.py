@@ -1,6 +1,8 @@
 """
 Tests for LLM provider interface compliance.
 Tests the provider contract — not the actual API calls (those need real keys).
+
+Owner: Sarala Biswal
 """
 from importlib.util import find_spec
 from unittest.mock import AsyncMock, MagicMock, patch
@@ -22,6 +24,7 @@ requires_openai = pytest.mark.skipif(not HAS_OPENAI, reason="openai SDK not inst
 # ── Interface contract tests ───────────────────────────────────────────────────
 
 class TestLLMProviderInterface:
+    """Coverage for the abstract provider contract and shared response types."""
 
     def test_message_dataclass(self):
         """Message should store role and content correctly."""
@@ -89,11 +92,20 @@ class TestLLMProviderInterface:
         from llm.base import LLMProvider
 
         class FailingProvider(LLMProvider):
+            """Provider test double that always fails completion."""
+
             @property
-            def provider_name(self): return "failing"
+            def provider_name(self):
+                """Return the failing provider name."""
+                return "failing"
+
             @property
-            def model_name(self): return "fail-model"
+            def model_name(self):
+                """Return the failing provider model name."""
+                return "fail-model"
+
             async def complete(self, messages, **kwargs):
+                """Raise a connection error to exercise health-check failure."""
                 raise ConnectionError("Cannot connect")
 
         provider = FailingProvider()
@@ -105,6 +117,7 @@ class TestLLMProviderInterface:
 # ── Factory tests ──────────────────────────────────────────────────────────────
 
 class TestLLMFactory:
+    """Coverage for provider factory selection and validation."""
 
     @requires_anthropic
     def test_factory_anthropic(self):
@@ -169,6 +182,7 @@ class TestLLMFactory:
 # ── Anthropic provider unit tests (mocked) ────────────────────────────────────
 
 class TestAnthropicProvider:
+    """Coverage for Anthropic provider request shaping and cost estimation."""
 
     @requires_anthropic
     @pytest.mark.asyncio
@@ -209,6 +223,7 @@ class TestAnthropicProvider:
 
     @requires_anthropic
     def test_provider_name_and_model(self):
+        """Anthropic provider should expose configured provider and model names."""
         from llm.anthropic_provider import AnthropicProvider
         provider = AnthropicProvider(api_key="test", model="claude-sonnet-4-20250514")
         assert provider.provider_name == "anthropic"
@@ -218,9 +233,11 @@ class TestAnthropicProvider:
 # ── Ollama provider unit tests ─────────────────────────────────────────────────
 
 class TestOllamaProvider:
+    """Coverage for Ollama provider request shaping and metadata."""
 
     @requires_httpx
     def test_provider_name_and_model(self):
+        """Ollama provider should expose configured provider and model names."""
         from llm.ollama_provider import OllamaProvider
         provider = OllamaProvider(base_url="http://localhost:11434", model="llama3")
         assert provider.provider_name == "ollama"
